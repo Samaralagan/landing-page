@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white mx-4 md:mx-8 lg:mx-12 xl:mx-16">
       {/* Two-Column Section */}
-      <div className="flex flex-col lg:flex-row min-h-screen pt-20 md:pt-24 lg:pt-0">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 py-12 mt-16 md:mt-20 lg:mt-24">
         {/* Left Column - Heading */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 lg:p-16 bg-[#0a0a0a]">
-          <div className="text-center lg:text-left">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-6 bg-gray-900 rounded-lg shadow-2xl border border-blue-500/30 h-auto">
+          <div className="text-center lg:text-left space-y-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
               Discover
               <span className="block text-[rgb(59,130,246)] mt-2">
                 Our Story
@@ -23,19 +23,19 @@ const About = () => {
         </div>
 
         {/* Right Column - Content Sections */}
-        <div className="w-full lg:w-1/2 bg-black flex flex-col justify-center p-6 md:p-12 lg:p-16">
+        <div className="w-full lg:w-1/2 bg-gray-900 rounded-lg shadow-2xl border border-blue-500/30 flex flex-col justify-center p-6 h-auto space-y-6">
           {/* First Section */}
-          <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-[#222]">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="w-full md:w-1/3 mb-4 md:mb-0 md:pr-6">
+          <div className="pb-6 border-b border-[#222]">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-full md:w-1/3">
                 <img
                   src="/api/placeholder/300/200"
                   alt="Event Innovation"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="w-full md:w-2/3 text-center md:text-left">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-[rgb(59,130,246)]">
+              <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
+                <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
                   Event Innovation
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
@@ -47,17 +47,17 @@ const About = () => {
           </div>
 
           {/* Second Section */}
-          <div className="mt-4 md:mt-6">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="w-full md:w-1/3 mb-4 md:mb-0 md:pr-6">
+          <div>
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-full md:w-1/3">
                 <img
                   src="/api/placeholder/300/200"
                   alt="Strategic Planning"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
-              <div className="w-full md:w-2/3 text-center md:text-left">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-[rgb(59,130,246)]">
+              <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
+                <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
                   Strategic Approach
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
@@ -71,7 +71,7 @@ const About = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="bg-black p-6 md:p-12 lg:p-16">
+      <div className="bg-gray-900 rounded-lg shadow-2xl border border-blue-500/30 p-6 md:p-8 lg:p-10">
         <h2 className="text-3xl md:text-4xl text-center mb-12 md:mb-16 text-[rgb(59,130,246)]">
           Our Evolutionary Journey
         </h2>
