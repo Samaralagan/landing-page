@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronRight, ChevronDown } from "lucide-react";
-
+import { Link } from "react-router-dom";
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -86,9 +86,11 @@ const FAQ = () => {
             Get in touch with us for details on additional services and custom
             work pricing
           </p>
-          <button className="bg-[rgb(59_130_246_/var(--tw-bg-opacity,1))] text-white px-8 py-3 rounded-[0.75rem_0rem_0.75rem_0rem] hover:rounded-[0rem_0.75rem_0rem_0.75rem] hover:bg-[rgb(59_130_246_/0.8)] transition">
-            CONTACT US
-          </button>
+          <Link to="/contact">
+            <button className="bg-[rgb(59_130_246_/var(--tw-bg-opacity,1))] text-white px-8 py-3 rounded-[0.75rem_0rem_0.75rem_0rem] hover:rounded-[0rem_0.75rem_0rem_0.75rem] hover:bg-[rgb(59_130_246_/0.8)] transition">
+              CONTACT US
+            </button>
+          </Link>
         </div>
       </div>
     </div>

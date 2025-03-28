@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Import images for icons and plan images
 import iconCore from "../assets/price1.png";
@@ -8,6 +10,7 @@ import iconTeam from "../assets/price3.png";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [hoveredPlan, setHoveredPlan] = useState(null);
 
   const plans = {
     monthly: [
@@ -246,19 +249,29 @@ const Pricing = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <button
+                <Link
+                  to="/contact"
+                  onMouseEnter={() => setHoveredPlan(plan.name)}
+                  onMouseLeave={() => setHoveredPlan(null)}
                   className={`
-                  w-full py-3 rounded-full font-semibold uppercase tracking-wider
+                  w-full py-3 font-semibold uppercase tracking-wider
+                  flex items-center justify-center
                   ${
                     plan.featured
                       ? `${plan.textColor} bg-[#1A2B4A] hover:bg-[#243A5E]`
                       : "bg-blue-600 text-white hover:bg-blue-500"
                   }
                   transition-colors duration-300
+                  rounded-[0.75rem_0rem_0.75rem_0rem]
+                  hover:rounded-[0rem_0.75rem_0rem_0.75rem]
                 `}
                 >
-                  Get Started
-                </button>
+                  {hoveredPlan === plan.name ? (
+                    <ArrowRight className="w-5 h-5" />
+                  ) : (
+                    "Get Started"
+                  )}
+                </Link>
 
                 {/* Limited Time Offer */}
                 {plan.featured && (

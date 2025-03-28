@@ -74,11 +74,6 @@ const Navbar = () => {
     <nav
       className={`
       mt-4 fixed top-0 left-0 right-0 z-50 flex justify-center
-      ${
-        isScrolled
-          ? "bg-white/60 backdrop-blur-md shadow-md"
-          : "bg-white/30 backdrop-blur-sm shadow-sm"
-      }
     `}
     >
       <div
