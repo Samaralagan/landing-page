@@ -118,15 +118,15 @@ const Pricing = () => {
     <div className="min-h-screen bg-[#050B1A] flex items-center justify-center p-4">
       <div className="w-full max-w-5xl">
         {/* Title */}
-        <h2 className="text-4xl font-bold text-white text-center mb-12">
+        <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12">
           Flexible pricing for teams of all sizes
         </h2>
 
         {/* Toggle Switch */}
-        <div className="flex justify-center mb-12 relative">
+        <div className="flex justify-center mb-8 md:mb-12 relative">
           <div className="bg-[#0E1629] rounded-full p-1 flex items-center relative z-10">
             <button
-              className={`px-8 py-2 rounded-full transition-colors duration-300 relative z-20 ${
+              className={`px-4 md:px-8 py-2 rounded-full transition-colors duration-300 relative z-20 ${
                 !isAnnual ? "bg-blue-600 text-white" : "text-gray-400"
               }`}
               onClick={() => setIsAnnual(false)}
@@ -134,7 +134,7 @@ const Pricing = () => {
               Monthly
             </button>
             <button
-              className={`px-8 py-2 rounded-full transition-colors duration-300 relative z-20 ${
+              className={`px-4 md:px-8 py-2 rounded-full transition-colors duration-300 relative z-20 ${
                 isAnnual ? "bg-blue-600 text-white" : "text-gray-400"
               }`}
               onClick={() => setIsAnnual(true)}
@@ -156,7 +156,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex justify-center items-center -space-x-4 h-[600px]">
+        <div className="flex flex-col md:flex-row md:justify-center md:items-center md:-space-x-4 space-y-8 md:space-y-0">
           {plans[isAnnual ? "annual" : "monthly"].map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -169,14 +169,14 @@ const Pricing = () => {
                 damping: 20,
               }}
               className={`
-                w-[350px] ${plan.bgColor} rounded-3xl 
+                w-full md:w-[350px] ${plan.bgColor} rounded-3xl 
                 flex flex-col justify-center
                 relative
-                ${index === 1 ? "z-10 pt-14 scale-110" : "pt-6 z-0"}
+                ${index === 1 ? "md:z-10 md:pt-14 md:scale-110" : "pt-6 md:z-0"}
                 transition-all duration-300
                 border border-[#1A2B4A]
                 ${plan.featured ? "border-2 border-[#1A2B4A]" : ""}
-                ${index === 1 ? "h-[600px]" : "h-[500px]"}
+                ${index === 1 ? "md:h-[600px]" : "md:h-[500px]"}
                 self-center
               `}
             >
