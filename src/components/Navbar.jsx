@@ -33,18 +33,64 @@ const Navbar = () => {
     };
   }, []);
 
+  const SignUpButton = ({ mobile }) => {
+    return (
+      <Link
+        to="/signup"
+        className={`
+          relative z-10 group
+          bg-blue-900 text-white 
+          px-4 py-2 
+          text-sm font-bold 
+          transition-all duration-500
+          ${mobile ? "" : "ml-4"}
+          ${
+            mobile
+              ? "rounded-[0.75rem_0rem_0.75rem_0rem]"
+              : "rounded-[0.75rem_0rem_0.75rem_0rem]"
+          }
+          hover:rounded-[0rem_0.75rem_0rem_0.75rem]
+          before:content-[''] 
+          before:absolute 
+          before:-inset-1 
+          before:bg-blue-500 
+          before:opacity-50 
+          before:blur-xl 
+          before:-z-10
+          after:content-[''] 
+          after:absolute 
+          after:inset-0 
+          after:border-2 
+          after:border-blue-500 
+          after:rounded-[inherit]
+        `}
+      >
+        Sign Up
+      </Link>
+    );
+  };
+
   return (
-    <nav className="mt-4 fixed top-0 left-0 right-0 z-50 flex justify-center">
+    <nav
+      className={`
+      mt-4 fixed top-0 left-0 right-0 z-50 flex justify-center
+      ${
+        isScrolled
+          ? "bg-white/60 backdrop-blur-md shadow-md"
+          : "bg-white/30 backdrop-blur-sm shadow-sm"
+      }
+    `}
+    >
       <div
         className={`
-          w-10/12 transition-all duration-300 ease-in-out
-          ${
-            isScrolled
-              ? "bg-white/60 backdrop-blur-md shadow-md"
-              : "bg-white/30 backdrop-blur-sm shadow-sm"
-          }
-          rounded-[3rem_0rem_3rem_0rem]
-        `}
+        w-10/12 transition-all duration-300 ease-in-out
+        rounded-[3rem_0rem_3rem_0rem]
+        ${
+          isScrolled
+            ? "bg-white/60 backdrop-blur-md shadow-md"
+            : "bg-white/30 backdrop-blur-sm shadow-sm"
+        }
+      `}
       >
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
@@ -52,18 +98,19 @@ const Navbar = () => {
             <img src={Logo} alt="Company Logo" className="h-8 w-auto" />
           </Link>
 
-          {/* Hamburger Menu for Mobile */}
-          <div className="md:hidden">
+          {/* Hamburger Menu and Signup Button for Mobile */}
+          <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 hover:text-gray-800 focus:outline-none"
+              className="text-white hover:text-gray-200 focus:outline-none font-bold"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+            <SignUpButton mobile={true} />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 relative">
+          <div className="hidden md:flex space-x-6 relative items-center">
             {navLinks.map((link) => (
               <div key={link.path} className="relative group">
                 {isActive(link.path) && (
@@ -109,6 +156,9 @@ const Navbar = () => {
                 </Link>
               </div>
             ))}
+
+            {/* Desktop Signup Button */}
+            <SignUpButton mobile={false} />
           </div>
 
           {/* Mobile Navigation Menu */}

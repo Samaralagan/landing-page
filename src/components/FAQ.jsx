@@ -57,19 +57,20 @@ const FAQ = () => {
                   {faq.question}
                 </span>
                 {activeIndex === index ? (
-                  <ChevronDown className="text-purple-500" size={24} />
+                  <ChevronDown
+                    className="text-[rgb(59_130_246_/var(--tw-text-opacity,1))]"
+                    size={24}
+                  />
                 ) : (
-                  <ChevronRight className="text-purple-500" size={24} />
+                  <ChevronRight
+                    className="text-[rgb(59_130_246_/var(--tw-text-opacity,1))]"
+                    size={24}
+                  />
                 )}
               </button>
 
               {activeIndex === index && (
-                <div
-                  className="p-6 pt-0 text-gray-300 text-base"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="p-6 pt-0 text-gray-300 text-base">
                   {faq.answer}
                 </div>
               )}
@@ -85,7 +86,7 @@ const FAQ = () => {
             Get in touch with us for details on additional services and custom
             work pricing
           </p>
-          <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition">
+          <button className="bg-[rgb(59_130_246_/var(--tw-bg-opacity,1))] text-white px-8 py-3 rounded-[0.75rem_0rem_0.75rem_0rem] hover:rounded-[0rem_0.75rem_0rem_0.75rem] hover:bg-[rgb(59_130_246_/0.8)] transition">
             CONTACT US
           </button>
         </div>
