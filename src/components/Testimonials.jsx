@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import price1 from "../assets/price1.png";
 const testimonials = [
   {
     id: 1,
@@ -8,7 +8,7 @@ const testimonials = [
     name: "Roohika",
     phone: "8800704223",
     stars: 5,
-    image: "/api/placeholder/200/200", // Replace with actual image path
+    image: price1, // Replace with actual image path
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const testimonials = [
     name: "Sarah Johnson",
     phone: "1234567890",
     stars: 4,
-    image: "/api/placeholder/200/200", // Replace with actual image path
+    image: price1, // Replace with actual image path
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Michael Chen",
     phone: "9876543210",
     stars: 5,
-    image: "/api/placeholder/200/200", // Replace with actual image path
+    image: price1, // Replace with actual image path
   },
 ];
 

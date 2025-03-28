@@ -5,8 +5,8 @@ import HowItWorks from "../components/HowItWorks";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import Partners from "../components/Partners";
-import CTA from "../components/CTA";
 import Features from "../components/Features";
+import FAQ from "../components/FAQ";
 
 // Zoom Animation Wrapper Component
 const ZoomAnimationWrapper = ({ children }) => {
@@ -88,7 +88,7 @@ const Home = () => {
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <CTA />
+        <FAQ />
       </ZoomAnimationWrapper>
     </div>
   );
