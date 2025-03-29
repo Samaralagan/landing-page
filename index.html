@@ -1,13 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="src/assets/favicon (2).png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Calabria Teachnology</title>
+    <style>
+      #scrollToTop {
+        position: fixed;
+        bottom: 100px; /* Moved higher to avoid overlapping with Chatwoot */
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: transparent; /* Transparent background for custom icon */
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        transition: transform 0.3s;
+      }
+
+      #scrollToTop img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      #scrollToTop:hover {
+        transform: translateY(-3px);
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <button id="scrollToTop" onclick="scrollToTop()">
+      <img src="src/assets/scrolltotop.png" alt="test" />
+    </button>
+
+    <script>
+      window.onscroll = function () {
+        let button = document.getElementById("scrollToTop");
+        if (
+          document.body.scrollTop > 200 ||
+          document.documentElement.scrollTop > 200
+        ) {
+          button.style.display = "flex";
+        } else {
+          button.style.display = "none";
+        }
+      };
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+
+    <script>
+      (function (d, t) {
+        var BASE_URL = "https://app.chatwoot.com";
+        var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src = BASE_URL + "/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+        g.onload = function () {
+          window.chatwootSDK.run({
+            websiteToken: "XobsAuxp6fcm4dXpWr899NYr",
+            baseUrl: BASE_URL,
+          });
+        };
+      })(document, "script");
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

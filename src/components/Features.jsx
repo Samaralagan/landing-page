@@ -6,6 +6,10 @@ import {
   MessageCircle,
   Mic,
 } from "lucide-react";
+import fea1 from "../assets/fea1.png";
+import fea2 from "../assets/fea2.png";
+import fea3 from "../assets/fea3.png";
+import fea4 from "../assets/fea4.png";
 
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState({
@@ -14,7 +18,7 @@ const Features = () => {
       "Say goodbye to writer's block. Generate high-quality, engaging text instantly with our advanced AI writing assistant. Perfect for blogs, articles, marketing copy, and creative writing.",
     subtitle: "Say goodbye to writer's block · AI",
     icon: Type,
-    image: "/api/placeholder/600/400",
+    image: fea1,
   });
 
   const features = [
@@ -24,7 +28,7 @@ const Features = () => {
         "Say goodbye to writer's block. Generate high-quality, engaging text instantly with our advanced AI writing assistant. Perfect for blogs, articles, marketing copy, and creative writing.",
       subtitle: "Say goodbye to writer's block · AI",
       icon: Type,
-      image: "/api/placeholder/600/400",
+      image: fea1,
     },
     {
       title: "AI Image Generator",
@@ -32,7 +36,7 @@ const Features = () => {
         "Transform your ideas into stunning visuals. Our AI image generation tool creates unique, high-resolution images based on your text descriptions, helping you bring creativity to life.",
       subtitle: "Create visual content instantly · AI",
       icon: ImageIcon,
-      image: "/api/placeholder/600/400",
+      image: fea2,
     },
     {
       title: "AI Code Generator",
@@ -40,7 +44,7 @@ const Features = () => {
         "Accelerate your development process with AI-powered code generation. Write clean, efficient code across multiple programming languages with intelligent suggestions and complete code blocks.",
       subtitle: "Write code with AI assistance · AI",
       icon: Code,
-      image: "/api/placeholder/600/400",
+      image: fea3,
     },
     {
       title: "AI Chat Bot",
@@ -48,7 +52,7 @@ const Features = () => {
         "Engage with an intelligent conversational assistant that understands context, provides instant responses, and helps with a wide range of tasks from customer support to personal assistance.",
       subtitle: "Intelligent conversation partner · AI",
       icon: MessageCircle,
-      image: "/api/placeholder/600/400",
+      image: fea4,
     },
     {
       title: "AI Speech to Text",

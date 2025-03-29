@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import LogoImage from "../assets/logo.jpg"; // Update this import path
+import LogoFooter from "../assets/logowhite.png"; // Update this import path
 
 const Footer = () => {
   return (
@@ -9,11 +9,7 @@ const Footer = () => {
         {/* Company Info */}
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
-            <img
-              src={LogoImage}
-              alt="Logo"
-              className="w-8 h-8 object-contain"
-            />
+            <img src={LogoFooter} alt="Logo" className="h-8 w-auto" />
           </div>
           <p className="text-gray-300 text-sm">
             Streamline your business financial management with our intuitive,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/logo.jpg";
+import Logo from "../assets/logo.png";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
@@ -131,7 +131,7 @@ const Navbar = () => {
                     ${
                       isActive(link.path)
                         ? "text-white font-bold text-lg"
-                        : "text-gray-300 hover:text-gray-100 text-base font-bold"
+                        : "text-white hover:text-gray-100 text-base font-bold"
                     }
                   `}
                 >
