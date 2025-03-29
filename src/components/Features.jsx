@@ -10,6 +10,7 @@ import fea1 from "../assets/fea1.png";
 import fea2 from "../assets/fea2.png";
 import fea3 from "../assets/fea3.png";
 import fea4 from "../assets/fea4.png";
+import fea5 from "../assets/fea5.png";
 
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState({
@@ -60,62 +61,70 @@ const Features = () => {
         "Convert spoken words into accurate, formatted text with our advanced speech recognition technology. Supports multiple languages and handles complex vocabulary with ease.",
       subtitle: "Convert speech to written text · AI",
       icon: Mic,
-      image: "/api/placeholder/600/400",
+      image: fea5,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex">
-      <div className="container mx-auto grid md:grid-cols-[30%_70%] gap-0">
-        {/* Services Navigation */}
-        <div className="bg-white/5 backdrop-blur-sm p-8 space-y-4">
-          <h2 className="text-2xl font-bold text-white mb-6">
-            Our AI Services
-          </h2>
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              onClick={() => setActiveFeature(feature)}
-              className={`
-                flex items-center p-4 rounded-lg cursor-pointer transition-all duration-300
-                ${
-                  activeFeature.title === feature.title
-                    ? "bg-[rgb(59,130,246,0.3)] text-white border-l-4 border-[rgb(59,130,246)]"
-                    : "hover:bg-white/10 text-gray-300 hover:translate-x-2 hover:border-l-4 hover:border-[rgb(59,130,246)]"
-                }
-                relative
-                rounded-[1.5rem_0rem_1.5rem_0rem]  /* Changed border-radius */
-              `}
-            >
-              <feature.icon className="mr-4" size={24} />
-              <div>
-                <span className="font-semibold block">{feature.title}</span>
-                <span className="text-xs text-gray-400">
-                  {feature.subtitle}
-                </span>
-              </div>
+    <div className="bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[30%_70%] md:grid-cols-[40%_60%]">
+          {/* Services Navigation */}
+          <div className="bg-white/5 backdrop-blur-sm p-4 sm:p-6">
+            <h2 className="text-xl font-bold text-white mb-4">
+              Our AI Services
+            </h2>
+            <div className="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2">
+              {features.map((feature) => (
+                <div
+                  key={feature.title}
+                  onClick={() => setActiveFeature(feature)}
+                  className={`
+                    flex-shrink-0 w-auto md:w-full flex items-center p-3 rounded-lg cursor-pointer transition-all
+                    ${
+                      activeFeature.title === feature.title
+                        ? "bg-[rgb(59,130,246,0.3)] text-white border-l-4 border-[rgb(59,130,246)]"
+                        : "hover:bg-white/10 text-gray-300 hover:translate-x-1 hover:border-l-4 hover:border-[rgb(59,130,246)]"
+                    }
+                    rounded-[1.5rem_0rem_1.5rem_0rem]
+                  `}
+                >
+                  <feature.icon className="mr-2" size={18} />
+                  <div>
+                    <span className="font-semibold block text-sm">
+                      {feature.title}
+                    </span>
+                    <span className="text-xs text-gray-400 hidden sm:block">
+                      {feature.subtitle}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Content Area */}
-        <div className="bg-white/10 backdrop-blur-sm p-12 flex items-center">
-          <div className="w-full">
+          {/* Content Area */}
+          <div className="bg-white/10 backdrop-blur-sm p-6">
             <h1
-              className="text-5xl font-bold mb-6 text-white"
+              className="text-3xl font-bold mb-3 text-white"
               style={{ color: "rgb(59 130 246 / var(--tw-text-opacity, 1))" }}
             >
               {activeFeature.title}
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-base text-gray-300 mb-4">
               {activeFeature.description}
             </p>
 
-            <div className="bg-white/5 border border-white/20 rounded-xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
+            <div className="bg-white/5 border border-white/20 rounded-xl overflow-hidden shadow-2xl">
               <img
                 src={activeFeature.image}
                 alt={activeFeature.title}
-                className="w-full h-[400px] object-cover"
+                className="w-full object-cover"
+                style={{
+                  height: "calc(100vh - 300px)",
+                  minHeight: "250px",
+                  maxHeight: "600px",
+                }}
               />
             </div>
           </div>

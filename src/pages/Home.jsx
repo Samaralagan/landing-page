@@ -8,6 +8,13 @@ import Partners from "../components/Partners";
 import Features from "../components/Features";
 import FAQ from "../components/FAQ";
 
+// CSS styles to override min-height
+const overrideStyles = {
+  "& > div": {
+    minHeight: "auto !important",
+  },
+};
+
 // Zoom Animation Wrapper Component
 const ZoomAnimationWrapper = ({ children }) => {
   return (
@@ -29,6 +36,7 @@ const ZoomAnimationWrapper = ({ children }) => {
           },
         },
       }}
+      className="min-h-auto"
     >
       {children}
     </motion.div>
@@ -58,37 +66,86 @@ const GlobalZoomEffect = () => {
 };
 
 const Home = () => {
+  // Apply CSS after component mounts to override min-height
+  useEffect(() => {
+    // Create a style element
+    const styleElement = document.createElement("style");
+
+    // Add CSS to override min-height for all component sections
+    styleElement.textContent = `
+      /* Override min-height for all section components */
+      .section-override > * {
+        min-height: auto !important;
+      }
+      
+      /* Override specifically for components that might have nested structures */
+      .section-override [class*="min-h-"], 
+      .section-override [class*="min-height"] {
+        min-height: auto !important;
+      }
+      
+      /* Target specific component classes if needed */
+      .hero-section, .features-section, .how-it-works-section,
+      .partners-section, .testimonials-section, .pricing-section,
+      .faq-section {
+        min-height: auto !important;
+      }
+    `;
+
+    // Append the style element to the document head
+    document.head.appendChild(styleElement);
+
+    // Clean up function to remove style element when component unmounts
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
+
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden section-override">
       {/* Global Zoom Effect */}
       <GlobalZoomEffect />
 
       <ZoomAnimationWrapper>
-        <Hero />
+        <div className="hero-section">
+          <Hero />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <Features />
+        <div className="features-section">
+          <Features />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <HowItWorks />
+        <div className="how-it-works-section">
+          <HowItWorks />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <Partners />
+        <div className="partners-section">
+          <Partners />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <Testimonials />
+        <div className="testimonials-section">
+          <Testimonials />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <Pricing />
+        <div className="pricing-section">
+          <Pricing />
+        </div>
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
-        <FAQ />
+        <div className="faq-section">
+          <FAQ />
+        </div>
       </ZoomAnimationWrapper>
     </div>
   );

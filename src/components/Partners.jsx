@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
+import par1 from "../assets/par1.png";
+import par2 from "../assets/par2.png";
+import par3 from "../assets/par3.png";
+import par4 from "../assets/par4.png";
+import par5 from "../assets/par8.png";
+import par6 from "../assets/par6.png";
+import par7 from "../assets/par7.png";
+// import par8 from "../assets/par8.png";
 
 const Partners = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -8,37 +16,37 @@ const Partners = () => {
   // Replace these with your actual logo paths
   const partnerLogos = [
     {
-      src: "/api/placeholder/200/100",
+      src: par1,
       alt: "Partner 1",
       link: "https://partner1.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par2,
       alt: "Partner 2",
       link: "https://partner2.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par3,
       alt: "Partner 3",
       link: "https://partner3.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par4,
       alt: "Partner 4",
       link: "https://partner4.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par5,
       alt: "Partner 5",
       link: "https://partner5.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par6,
       alt: "Partner 6",
       link: "https://partner6.com",
     },
     {
-      src: "/api/placeholder/200/100",
+      src: par7,
       alt: "Partner 7",
       link: "https://partner7.com",
     },
