@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import price1 from "../assets/price1.png";
+import testi1 from "../assets/testi1.png";
+import testi2 from "../assets/testi2.png";
+import testi3 from "../assets/testi3.png";
+import testi4 from "../assets/testi4.png";
+import testi5 from "../assets/testi5.png";
 import testibg from "../assets/testibg.jpg";
 import ran4 from "../assets/ran4.gif";
 
@@ -11,7 +15,7 @@ const testimonials = [
     name: "Roohika",
     phone: "8800704223",
     stars: 5,
-    image: price1, // Replace with actual image path
+    image: testi1, // Replace with actual image path
   },
   {
     id: 2,
@@ -19,7 +23,7 @@ const testimonials = [
     name: "Sarah Johnson",
     phone: "1234567890",
     stars: 4,
-    image: price1, // Replace with actual image path
+    image: testi2, // Replace with actual image path
   },
   {
     id: 3,
@@ -27,7 +31,7 @@ const testimonials = [
     name: "Roohika",
     phone: "8800704223",
     stars: 5,
-    image: price1, // Replace with actual image path
+    image: testi3, // Replace with actual image path
   },
   {
     id: 4,
@@ -35,7 +39,7 @@ const testimonials = [
     name: "Michael Chen",
     phone: "9876543210",
     stars: 5,
-    image: price1, // Replace with actual image path
+    image: testi4, // Replace with actual image path
   },
   {
     id: 5,
@@ -43,7 +47,7 @@ const testimonials = [
     name: "Roohika",
     phone: "8800704223",
     stars: 5,
-    image: price1, // Replace with actual image path
+    image: testi5, // Replace with actual image path
   },
 ];
 

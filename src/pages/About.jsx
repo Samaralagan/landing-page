@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import about from "../assets/about.png";
+import vision from "../assets/vision.png";
 
 const About = () => {
   return (
@@ -29,14 +31,14 @@ const About = () => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-full md:w-1/3">
                 <img
-                  src="/api/placeholder/300/200"
+                  src={about}
                   alt="Event Innovation"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
               <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
                 <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
-                  Event Innovation
+                  Mission
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
                   Transforming event experiences with cutting-edge technology
@@ -51,14 +53,14 @@ const About = () => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-full md:w-1/3">
                 <img
-                  src="/api/placeholder/300/200"
+                  src={vision}
                   alt="Strategic Planning"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
               <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
                 <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
-                  Strategic Approach
+                  vision
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
                   Delivering tailored event solutions that exceed expectations

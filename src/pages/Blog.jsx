@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ChevronRight, Calendar, User, ArrowRight } from "lucide-react";
-
+import blog1 from "../assets/blog1.png";
+import blog2 from "../assets/blog2.png";
+import blog3 from "../assets/blog3.png";
+import blog4 from "../assets/blog4.png";
 const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [hoveredBlog, setHoveredBlog] = useState(null);
@@ -13,7 +16,7 @@ const Blog = () => {
       date: "March 15, 2025",
       excerpt:
         "Explore the cutting-edge technologies transforming the event management landscape...",
-      image: "/api/placeholder/400/250",
+      image: blog1,
       content: `Event management is undergoing a revolutionary transformation driven by technological innovations. Artificial intelligence, virtual reality, and data analytics are reshaping how we plan, execute, and experience events.
 
 From AI-powered personalization to immersive virtual experiences, the future of event management is about creating more engaging, intelligent, and adaptive event solutions that connect people in unprecedented ways.
@@ -31,7 +34,7 @@ Key trends include:
       date: "February 28, 2025",
       excerpt:
         "Discover innovative strategies for creating eco-friendly and sustainable events...",
-      image: "/api/placeholder/400/250",
+      image: blog2,
       content: `Sustainability is no longer a buzzword but a critical consideration in event management. Modern event planners are adopting innovative approaches to reduce environmental impact while delivering exceptional experiences.
 
 Key sustainable event strategies include:
@@ -48,7 +51,7 @@ Key sustainable event strategies include:
       date: "January 20, 2025",
       excerpt:
         "Revolutionize your event networking with advanced digital connection tools...",
-      image: "/api/placeholder/400/250",
+      image: blog3,
       content: `Digital networking has transformed how professionals connect during events. Advanced platforms now offer AI-powered matchmaking, real-time communication tools, and seamless virtual interaction capabilities.
 
 Innovative networking features:
@@ -64,7 +67,7 @@ Innovative networking features:
       date: "December 10, 2024",
       excerpt:
         "Blending physical and virtual experiences for maximum event engagement...",
-      image: "/api/placeholder/400/250",
+      image: blog4,
       content: `Hybrid events have emerged as a powerful model, combining in-person and virtual experiences. This approach offers unprecedented flexibility, accessibility, and engagement for event participants.
 
 Hybrid event advantages:
