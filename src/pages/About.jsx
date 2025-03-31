@@ -170,7 +170,10 @@ const About = () => {
                       <p className="text-gray-300">{item.description}</p>
                     </div>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgb(59,130,246)] w-8 h-8 rounded-full"></div>
+                  <div
+                    className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgb(59,130,246)] w-8 h-8 rounded-full mb-[1.2rem]
+"
+                  ></div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-[rgb(59,130,246)]">
                     {item.year}
                   </div>

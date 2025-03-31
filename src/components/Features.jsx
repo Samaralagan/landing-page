@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Type,
   Image as ImageIcon,
@@ -21,6 +21,10 @@ const Features = () => {
     icon: Type,
     image: fea1,
   });
+
+  const [animatedItems, setAnimatedItems] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const featuresContainerRef = useRef(null);
 
   const features = [
     {
@@ -65,8 +69,65 @@ const Features = () => {
     },
   ];
 
+  // Setup Intersection Observer to detect when Features section enters or leaves the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Set visibility based on intersection
+        setIsVisible(entry.isIntersecting);
+
+        // Reset animations when element leaves viewport
+        if (!entry.isIntersecting) {
+          setAnimatedItems([]);
+        }
+      },
+      {
+        root: null, // Use the viewport as the root
+        rootMargin: "0px",
+        threshold: 0.2, // Trigger when 20% of the element is visible
+      }
+    );
+
+    if (featuresContainerRef.current) {
+      observer.observe(featuresContainerRef.current);
+    }
+
+    return () => {
+      if (featuresContainerRef.current) {
+        observer.unobserve(featuresContainerRef.current);
+      }
+    };
+  }, []);
+
+  // Trigger animations when the component becomes visible
+  useEffect(() => {
+    if (isVisible) {
+      // Reset animations
+      setAnimatedItems([]);
+
+      // Start staggered animations
+      features.forEach((_, index) => {
+        setTimeout(() => {
+          setAnimatedItems((prev) => [...prev, index]);
+        }, 200 * index); // 200ms delay between each item
+      });
+    }
+  }, [isVisible]);
+
+  // Function to determine animation class based on index
+  const getAnimationClass = (index) => {
+    if (!isVisible || !animatedItems.includes(index)) {
+      return "opacity-0 -translate-x-12";
+    }
+
+    return "animate-slide-in-left";
+  };
+
   return (
-    <div className="bg-gradient-to-b from-black via-gray-900 to-black">
+    <div
+      className="bg-gradient-to-b from-black via-gray-900 to-black"
+      ref={featuresContainerRef}
+    >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[30%_70%] md:grid-cols-[40%_60%]">
           {/* Services Navigation */}
@@ -74,8 +135,8 @@ const Features = () => {
             <h2 className="text-xl font-bold text-white mb-4">
               Our AI Services
             </h2>
-            <div className="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2">
-              {features.map((feature) => (
+            <div class="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2 lg:gap-y-6">
+              {features.map((feature, index) => (
                 <div
                   key={feature.title}
                   onClick={() => setActiveFeature(feature)}
@@ -87,6 +148,7 @@ const Features = () => {
                         : "hover:bg-white/10 text-gray-300 hover:translate-x-1 hover:border-l-4 hover:border-[rgb(59,130,246)]"
                     }
                     rounded-[1.5rem_0rem_1.5rem_0rem]
+                    ${getAnimationClass(index)}
                   `}
                 >
                   <feature.icon className="mr-2" size={18} />
@@ -130,6 +192,26 @@ const Features = () => {
           </div>
         </div>
       </div>
+
+      {/* Add animation styles */}
+      <style jsx>{`
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-48px);
+            border-left: 4px solid transparent;
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+            border-left: 4px solid rgb(59, 130, 246);
+          }
+        }
+
+        .animate-slide-in-left {
+          animation: slideInLeft 0.6s ease forwards;
+        }
+      `}</style>
     </div>
   );
 };

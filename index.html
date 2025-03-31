@@ -20,7 +20,8 @@
         justify-content: center;
         align-items: center;
         z-index: 1000;
-        transition: transform 0.3s;
+        transition: transform 0.3s, opacity 0.3s;
+        opacity: 1;
       }
 
       #scrollToTop img {
@@ -32,6 +33,10 @@
       #scrollToTop:hover {
         transform: translateY(-3px);
       }
+
+      #scrollToTop.fade {
+        opacity: 0;
+      }
     </style>
   </head>
   <body>
@@ -42,13 +47,34 @@
     </button>
 
     <script>
+      let hideTimeout;
+      let lastScrollTime = 0;
+
       window.onscroll = function () {
         let button = document.getElementById("scrollToTop");
+        lastScrollTime = new Date().getTime();
+
         if (
           document.body.scrollTop > 200 ||
           document.documentElement.scrollTop > 200
         ) {
           button.style.display = "flex";
+          button.classList.remove("fade");
+
+          // Clear any existing timeout
+          clearTimeout(hideTimeout);
+
+          // Set a new timeout to hide the button after 2 seconds
+          hideTimeout = setTimeout(function () {
+            button.classList.add("fade");
+
+            // After fade animation completes, hide the button
+            setTimeout(function () {
+              if (new Date().getTime() - lastScrollTime >= 2000) {
+                button.style.display = "none";
+              }
+            }, 300); // match this to your CSS transition time
+          }, 2000);
         } else {
           button.style.display = "none";
         }
