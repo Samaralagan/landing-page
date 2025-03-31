@@ -8,9 +8,102 @@ import iconCore from "../assets/price1.png";
 import iconOverdrive from "../assets/price2.png";
 import iconTeam from "../assets/price3.png";
 
+const SlidingButton = ({ text, featured, textColor, bgColor }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Wave button image URL
+  const waveImageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fbtn-wave.png?alt=media&token=267962fb-78ee-4fcb-a559-034579dc675d";
+
+  return (
+    <button
+      className={`
+        relative flex items-center justify-center w-full h-14 
+        overflow-hidden group
+        transition-all duration-500 ease-in-out
+        ${
+          featured
+            ? `${bgColor} ${textColor}`
+            : "bg-blue-600 text-white hover:bg-blue-500"
+        }
+        ${
+          isHovered
+            ? "rounded-[0rem_0.75rem_0rem_0.75rem]"
+            : "rounded-[0.75rem_0rem_0.75rem_0rem]"
+        }
+      `}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Wave Effect */}
+      <div
+        className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+        style={{
+          height: isHovered ? "100%" : "0%",
+          zIndex: 0,
+        }}
+      >
+        <div
+          className="wave-before absolute w-full h-[22px] bottom-full left-0"
+          style={{
+            backgroundImage: `url(${waveImageUrl})`,
+            backgroundSize: "contain",
+            animation: "wave 2s linear infinite",
+            zIndex: 0,
+          }}
+        />
+      </div>
+
+      {/* Sliding Circle */}
+      <div
+        className={`
+          absolute left-4 top-1/2 -translate-y-1/2 
+          w-10 h-10 bg-white rounded-full 
+          transition-all duration-500 ease-in-out z-10
+          ${isHovered ? "translate-x-[calc(100%-3rem)]" : "translate-x-0"}
+        `}
+      >
+        {/* Arrow or Icon inside the circle */}
+        <div className="flex items-center justify-center w-full h-full">
+          <ArrowRight className="w-5 h-5 text-blue-500" />
+        </div>
+      </div>
+
+      {/* Button Text */}
+      <span
+        className={`
+          absolute w-full font-semibold uppercase tracking-wider z-10
+          transition-all duration-500 ease-in-out
+          ${
+            isHovered
+              ? "translate-x-[-50%] opacity-0"
+              : "translate-x-0 opacity-100"
+          }
+        `}
+      >
+        {text}
+      </span>
+
+      {/* Hovered Text */}
+      <span
+        className={`
+          absolute w-full font-semibold uppercase tracking-wider z-10
+          transition-all duration-500 ease-in-out
+          ${
+            isHovered
+              ? "translate-x-0 opacity-100"
+              : "translate-x-[50%] opacity-0"
+          }
+        `}
+      >
+        {text}
+      </span>
+    </button>
+  );
+};
+
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
-  const [hoveredPlan, setHoveredPlan] = useState(null);
 
   const plans = {
     monthly: [
@@ -249,29 +342,18 @@ const Pricing = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <Link
-                  to="/contact"
-                  onMouseEnter={() => setHoveredPlan(plan.name)}
-                  onMouseLeave={() => setHoveredPlan(null)}
-                  className={`
-                  w-full py-3 font-semibold uppercase tracking-wider
-                  flex items-center justify-center
-                  ${
-                    plan.featured
-                      ? `${plan.textColor} bg-[#1A2B4A] hover:bg-[#243A5E]`
-                      : "bg-blue-600 text-white hover:bg-blue-500"
-                  }
-                  transition-colors duration-300
-                  rounded-[0.75rem_0rem_0.75rem_0rem]
-                  hover:rounded-[0rem_0.75rem_0rem_0.75rem]
-                `}
-                >
-                  {hoveredPlan === plan.name ? (
-                    <ArrowRight className="w-5 h-5" />
+                <div className="w-full">
+                  {plan.featured ? (
+                    <SlidingButton
+                      text="Get Started"
+                      featured={true}
+                      bgColor="bg-[#1A2B4A]"
+                      textColor={plan.textColor}
+                    />
                   ) : (
-                    "Get Started"
+                    <SlidingButton text="Get Started" featured={false} />
                   )}
-                </Link>
+                </div>
 
                 {/* Limited Time Offer */}
                 {plan.featured && (
@@ -284,6 +366,15 @@ const Pricing = () => {
           ))}
         </div>
       </div>
+
+      {/* Add wave animation styles */}
+      <style jsx>{`
+        @keyframes wave {
+          to {
+            background-position-x: 118px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

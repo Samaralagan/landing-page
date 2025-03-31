@@ -5,18 +5,49 @@ import React, { useState } from "react";
 const SlidingButton = () => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Wave button image URL
+  const waveImageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fbtn-wave.png?alt=media&token=267962fb-78ee-4fcb-a559-034579dc675d";
+
   return (
     <button
-      className="relative flex items-center w-48 h-14 bg-blue-500 rounded-full overflow-hidden group"
+      className={`
+        relative flex items-center w-48 h-14 bg-blue-500 overflow-hidden group
+        transition-all duration-500 ease-in-out
+        ${
+          isHovered
+            ? "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
+            : "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
+        }
+      `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Wave Effect */}
+      <div
+        className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+        style={{
+          height: isHovered ? "100%" : "0%",
+          zIndex: 0,
+        }}
+      >
+        <div
+          className="wave-before absolute w-full h-[22px] bottom-full left-0"
+          style={{
+            backgroundImage: `url(${waveImageUrl})`,
+            backgroundSize: "contain",
+            animation: "wave 2s linear infinite",
+            zIndex: 0,
+          }}
+        />
+      </div>
+
       {/* Sliding Circle */}
       <div
         className={`
           absolute left-0 top-1/2 -translate-y-1/2 
           w-14 h-14 bg-white rounded-full 
-          transition-all duration-500 ease-in-out
+          transition-all duration-500 ease-in-out z-10
           ${isHovered ? "translate-x-[calc(100%+5rem)]" : "translate-x-0"}
         `}
       >
@@ -43,7 +74,7 @@ const SlidingButton = () => {
       {/* Button Text */}
       <span
         className={`
-          absolute w-full text-white font-semibold 
+          absolute w-full text-white font-semibold z-10
           transition-all duration-500 ease-in-out
           ${
             isHovered
@@ -58,7 +89,7 @@ const SlidingButton = () => {
       {/* Hovered Text */}
       <span
         className={`
-          absolute w-full text-white font-semibold 
+          absolute w-full text-white font-semibold z-10
           transition-all duration-500 ease-in-out
           ${
             isHovered
@@ -150,6 +181,15 @@ const Hero = () => {
 
       {/* Curved Yellow Border - Changed to orange as in the image */}
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-orange-500" />
+
+      {/* Add wave animation styles */}
+      <style jsx>{`
+        @keyframes wave {
+          to {
+            background-position-x: 118px;
+          }
+        }
+      `}</style>
     </motion.section>
   );
 };
