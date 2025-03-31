@@ -426,18 +426,20 @@ const Pricing = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <div className="w-full">
-                  {plan.featured ? (
-                    <SlidingButton
-                      text="Get Started"
-                      featured={true}
-                      bgColor="bg-[#1A2B4A]"
-                      textColor={plan.textColor}
-                    />
-                  ) : (
-                    <SlidingButton text="Get Started" featured={false} />
-                  )}
-                </div>
+                <Link to="/contact">
+                  <div className="w-full">
+                    {plan.featured ? (
+                      <SlidingButton
+                        text="Get Started"
+                        featured={true}
+                        bgColor="bg-[#1A2B4A]"
+                        textColor={plan.textColor}
+                      />
+                    ) : (
+                      <SlidingButton text="Get Started" featured={false} />
+                    )}
+                  </div>
+                </Link>
 
                 {/* Limited Time Offer */}
                 {plan.featured && (
