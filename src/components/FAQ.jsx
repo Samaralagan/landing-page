@@ -6,8 +6,9 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [waveButtonHover, setWaveButtonHover] = useState(false);
   const [animatedItems, setAnimatedItems] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
   const faqContainerRef = useRef(null);
+  const observerRef = useRef(null);
+  const initialLoadRef = useRef(true);
 
   const faqs = [
     {
@@ -37,50 +38,69 @@ const FAQ = () => {
     },
   ];
 
-  // Setup Intersection Observer to detect when FAQ section enters or leaves the viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Set visibility based on intersection
-        setIsVisible(entry.isIntersecting);
+  // Function to trigger animations
+  const triggerAnimations = () => {
+    // Clear any existing animations
+    setAnimatedItems([]);
 
-        // Reset animations when element leaves viewport
-        if (!entry.isIntersecting) {
+    // Force a repaint to ensure CSS transitions work correctly
+    if (faqContainerRef.current) {
+      void faqContainerRef.current.offsetHeight;
+    }
+
+    // Set a timeout to ensure the DOM has updated
+    setTimeout(() => {
+      // Animate items one by one with a delay
+      faqs.forEach((_, index) => {
+        setTimeout(() => {
+          setAnimatedItems((prev) => [...prev, index]);
+        }, 100 * index);
+      });
+    }, 50);
+  };
+
+  // Setup Intersection Observer
+  useEffect(() => {
+    // Create a new IntersectionObserver
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        // When the element enters the viewport
+        if (entry.isIntersecting) {
+          // For initial load, delay slightly to ensure everything is rendered
+          if (initialLoadRef.current) {
+            setTimeout(() => {
+              triggerAnimations();
+              initialLoadRef.current = false;
+            }, 300);
+          } else {
+            // For subsequent views, trigger immediately
+            triggerAnimations();
+          }
+        } else {
+          // When element leaves viewport, reset animations
           setAnimatedItems([]);
         }
       },
       {
-        root: null, // Use the viewport as the root
+        threshold: 0.1, // Trigger when 10% of the element is visible
         rootMargin: "0px",
-        threshold: 0.2, // Trigger when 20% of the element is visible
       }
     );
 
+    // Start observing the FAQ container
     if (faqContainerRef.current) {
-      observer.observe(faqContainerRef.current);
+      observerRef.current.observe(faqContainerRef.current);
     }
 
+    // Cleanup function
     return () => {
-      if (faqContainerRef.current) {
-        observer.unobserve(faqContainerRef.current);
+      if (observerRef.current && faqContainerRef.current) {
+        observerRef.current.unobserve(faqContainerRef.current);
       }
     };
   }, []);
-
-  // Trigger animations when the component becomes visible
-  useEffect(() => {
-    if (isVisible) {
-      // Reset animations
-      setAnimatedItems([]);
-
-      // Start staggered animations
-      faqs.forEach((_, index) => {
-        setTimeout(() => {
-          setAnimatedItems((prev) => [...prev, index]);
-        }, 200 * index); // 200ms delay between each item
-      });
-    }
-  }, [isVisible]);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -92,8 +112,8 @@ const FAQ = () => {
 
   // Function to determine animation class based on index
   const getAnimationClass = (index) => {
-    if (!isVisible || !animatedItems.includes(index)) {
-      return "opacity-0 translate-y-8"; // Hidden and slightly down
+    if (!animatedItems.includes(index)) {
+      return "opacity-0 translate-y-4"; // Initial hidden state
     }
 
     // Odd indices come from right, even from left
@@ -115,7 +135,7 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`bg-[#0E1629] border border-[#1A2B4A] rounded-lg overflow-hidden transition-all duration-500 ${getAnimationClass(
+              className={`bg-[#0E1629] border border-[#1A2B4A] rounded-lg overflow-hidden transition-all duration-300 ${getAnimationClass(
                 index
               )}`}
             >
@@ -203,33 +223,33 @@ const FAQ = () => {
         }
 
         @keyframes fadeInLeft {
-          from {
+          0% {
             opacity: 0;
-            transform: translateX(-100px);
+            transform: translateX(-30px);
           }
-          to {
+          100% {
             opacity: 1;
             transform: translateX(0);
           }
         }
 
         @keyframes fadeInRight {
-          from {
+          0% {
             opacity: 0;
-            transform: translateX(100px);
+            transform: translateX(30px);
           }
-          to {
+          100% {
             opacity: 1;
             transform: translateX(0);
           }
         }
 
         .animate-fade-in-left {
-          animation: fadeInLeft 0.8s ease forwards;
+          animation: fadeInLeft 0.5s ease-out forwards;
         }
 
         .animate-fade-in-right {
-          animation: fadeInRight 0.8s ease forwards;
+          animation: fadeInRight 0.5s ease-out forwards;
         }
       `}</style>
     </div>

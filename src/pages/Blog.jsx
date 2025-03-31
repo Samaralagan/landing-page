@@ -4,9 +4,15 @@ import blog1 from "../assets/blog1.png";
 import blog2 from "../assets/blog2.png";
 import blog3 from "../assets/blog3.png";
 import blog4 from "../assets/blog4.png";
+
 const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [hoveredBlog, setHoveredBlog] = useState(null);
+  const [hoveredButtons, setHoveredButtons] = useState({});
+
+  // Wave button image URL
+  const waveImageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fbtn-wave.png?alt=media&token=267962fb-78ee-4fcb-a559-034579dc675d";
 
   const blogs = [
     {
@@ -79,6 +85,13 @@ Hybrid event advantages:
     },
   ];
 
+  const handleButtonHover = (id, isHovered) => {
+    setHoveredButtons((prev) => ({
+      ...prev,
+      [id]: isHovered,
+    }));
+  };
+
   const renderBlogCard = (blog) => (
     <div
       key={blog.id}
@@ -136,9 +149,30 @@ Hybrid event advantages:
           <div>
             <button
               onClick={() => setSelectedBlog(blog)}
-              className="w-full bg-[rgb(59,130,246)] text-white py-2 rounded-[0.75rem_0rem_0.75rem_0rem] flex items-center justify-center hover:bg-blue-600 transition"
+              className="relative w-full bg-[rgb(59,130,246)] text-white py-2 rounded-[0.75rem_0rem_0.75rem_0rem] flex items-center justify-center hover:bg-blue-600 transition overflow-hidden"
+              onMouseEnter={() => handleButtonHover(blog.id, true)}
+              onMouseLeave={() => handleButtonHover(blog.id, false)}
             >
-              Read More <ArrowRight className="ml-2" size={20} />
+              {/* Wave Effect */}
+              <div
+                className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+                style={{
+                  height: hoveredButtons[blog.id] ? "100%" : "0%",
+                  zIndex: 0,
+                }}
+              >
+                <div
+                  className="wave-before absolute w-full h-[22px] bottom-full left-0"
+                  style={{
+                    backgroundImage: `url(${waveImageUrl})`,
+                    backgroundSize: "contain",
+                    animation: "wave 2s linear infinite",
+                    zIndex: 0,
+                  }}
+                />
+              </div>
+              <span className="relative z-10">Read More</span>
+              <ArrowRight className="ml-2 relative z-10" size={20} />
             </button>
           </div>
         </div>
@@ -186,9 +220,30 @@ Hybrid event advantages:
       <div className="p-6 md:p-8">
         <button
           onClick={() => setSelectedBlog(null)}
-          className="mb-4 flex items-center text-[rgb(59,130,246)] hover:text-blue-400"
+          className="mb-4 flex items-center text-[rgb(59,130,246)] hover:text-blue-400 relative overflow-hidden"
+          onMouseEnter={() => handleButtonHover("back", true)}
+          onMouseLeave={() => handleButtonHover("back", false)}
         >
-          <ChevronRight className="mr-2" /> Back to Blog List
+          {/* Wave Effect */}
+          <div
+            className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+            style={{
+              height: hoveredButtons["back"] ? "100%" : "0%",
+              zIndex: 0,
+            }}
+          >
+            <div
+              className="wave-before absolute w-full h-[22px] bottom-full left-0"
+              style={{
+                backgroundImage: `url(${waveImageUrl})`,
+                backgroundSize: "contain",
+                animation: "wave 2s linear infinite",
+                zIndex: 0,
+              }}
+            />
+          </div>
+          <ChevronRight className="mr-2 relative z-10" />
+          <span className="relative z-10">Back to Blog List</span>
         </button>
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
           {blog.title}
@@ -227,6 +282,15 @@ Hybrid event advantages:
           </div>
         )}
       </div>
+
+      {/* Add wave animation styles */}
+      <style jsx>{`
+        @keyframes wave {
+          to {
+            background-position-x: 118px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

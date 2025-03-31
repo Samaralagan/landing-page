@@ -8,6 +8,10 @@ export default {
         secondary: "#161b22",
         accent: "#58a6ff",
       },
+      fontFamily: {
+        sans: ["Orbitron", "sans-serif"], // Make Orbitron the default sans font
+        orbitron: ["Orbitron", "sans-serif"], // Also available as a specific font class
+      },
     },
   },
   plugins: [],

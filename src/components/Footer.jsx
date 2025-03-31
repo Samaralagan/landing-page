@@ -18,28 +18,61 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Rest of the footer remains the same */}
+        {/* Useful Links */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
-          <ul className="space-y-2">
+          <ul className="grid grid-cols-2 lg:grid-cols-2 gap-4">
             <li>
-              <a href="#" className="hover:text-purple-400 transition-colors">
+              <a href="/" className="hover:text-purple-400 transition-colors">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-purple-400 transition-colors">
-                Features
+              <a
+                href="/about"
+                className="hover:text-purple-400 transition-colors"
+              >
+                About
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-purple-400 transition-colors">
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-purple-400 transition-colors">
+              <a
+                href="/contact"
+                className="hover:text-purple-400 transition-colors"
+              >
                 Contact
+              </a>
+            </li>
+            <li>
+              <a
+                href="/PricingTable"
+                className="hover:text-purple-400 transition-colors"
+              >
+                Pricing Table
+              </a>
+            </li>
+            <li>
+              <a
+                href="/blog"
+                className="hover:text-purple-400 transition-colors"
+              >
+                Blogs
+              </a>
+            </li>
+            <li>
+              <a
+                href="/Terms"
+                className="hover:text-purple-400 transition-colors"
+              >
+                Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a
+                href="/privacy-policy"
+                className="hover:text-purple-400 transition-colors"
+              >
+                Privacy Policy
               </a>
             </li>
           </ul>

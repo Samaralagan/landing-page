@@ -26,7 +26,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here
     console.log(formData);
   };
 
@@ -43,15 +42,32 @@ const Contact = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
               <Phone className="text-blue-500 w-6 h-6" />
-              <span>+1 (555) 123-4567</span>
+              <a
+                href="tel:+116615912047"
+                className="hover:text-blue-400 transition-colors"
+              >
+                +1 16615912047
+              </a>
             </div>
             <div className="flex items-center space-x-4">
               <Mail className="text-blue-500 w-6 h-6" />
-              <span>contact@yourcompany.com</span>
+              <a
+                href="mailto:info@calabriatechnology.com"
+                className="hover:text-blue-400 transition-colors"
+              >
+                info@calabriatechnology.com
+              </a>
             </div>
             <div className="flex items-center space-x-4">
               <MapPin className="text-blue-500 w-6 h-6" />
-              <span>123 Tech Lane, Innovation City, ST 12345</span>
+              <a
+                href="https://www.google.com/maps?q=159+Wooster+St,+New+York,+NY+10012,+United+States"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
+                159 Wooster St, New York, NY 10012, United States
+              </a>
             </div>
           </div>
 
@@ -138,13 +154,14 @@ const Contact = () => {
           </h2>
           <div className="w-full h-96 overflow-hidden rounded-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.982146144674!2d-73.98823548468239!3d40.748817179278846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1623861174688!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.617910586249!2d-74.00193132397355!3d40.72642707139141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2598e6b1d3315%3A0xdfe3eac582834c72!2s159%20Wooster%20St%2C%20New%20York%2C%20NY%2010012%2C%20USA!5e0!3m2!1sen!2slk!4v1743421204264!5m2!1sen!2slk"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
             ></iframe>
+            {/* <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
           </div>
         </div>
       </div>

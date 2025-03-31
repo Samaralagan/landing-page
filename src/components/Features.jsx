@@ -13,19 +13,6 @@ import fea4 from "../assets/fea4.png";
 import fea5 from "../assets/fea5.png";
 
 const Features = () => {
-  const [activeFeature, setActiveFeature] = useState({
-    title: "AI Text Generator",
-    description:
-      "Say goodbye to writer's block. Generate high-quality, engaging text instantly with our advanced AI writing assistant. Perfect for blogs, articles, marketing copy, and creative writing.",
-    subtitle: "Say goodbye to writer's block · AI",
-    icon: Type,
-    image: fea1,
-  });
-
-  const [animatedItems, setAnimatedItems] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
-  const featuresContainerRef = useRef(null);
-
   const features = [
     {
       title: "AI Text Generator",
@@ -69,8 +56,29 @@ const Features = () => {
     },
   ];
 
+  const [activeFeature, setActiveFeature] = useState(features[0]);
+  const [animatedItems, setAnimatedItems] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const featuresContainerRef = useRef(null);
+  const animationTimersRef = useRef([]);
+
+  // Handle component mount
+  useEffect(() => {
+    setIsMounted(true);
+
+    return () => {
+      setIsMounted(false);
+      // Clear all animation timers when component unmounts
+      animationTimersRef.current.forEach((timer) => clearTimeout(timer));
+      animationTimersRef.current = [];
+    };
+  }, []);
+
   // Setup Intersection Observer to detect when Features section enters or leaves the viewport
   useEffect(() => {
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Set visibility based on intersection
@@ -78,6 +86,9 @@ const Features = () => {
 
         // Reset animations when element leaves viewport
         if (!entry.isIntersecting) {
+          // Clear all animation timers
+          animationTimersRef.current.forEach((timer) => clearTimeout(timer));
+          animationTimersRef.current = [];
           setAnimatedItems([]);
         }
       },
@@ -97,22 +108,45 @@ const Features = () => {
         observer.unobserve(featuresContainerRef.current);
       }
     };
-  }, []);
+  }, [isMounted]);
 
   // Trigger animations when the component becomes visible
   useEffect(() => {
+    if (!isMounted) return;
+
     if (isVisible) {
+      // Clear previous timers
+      animationTimersRef.current.forEach((timer) => clearTimeout(timer));
+      animationTimersRef.current = [];
+
       // Reset animations
       setAnimatedItems([]);
 
-      // Start staggered animations
+      // Create new staggered animations with a slight initial delay
+      const initialDelay = 100; // Small initial delay to ensure component is fully rendered
+
       features.forEach((_, index) => {
-        setTimeout(() => {
-          setAnimatedItems((prev) => [...prev, index]);
-        }, 200 * index); // 200ms delay between each item
+        const timer = setTimeout(() => {
+          if (isMounted) {
+            setAnimatedItems((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
+          }
+        }, initialDelay + 200 * index); // 200ms delay between each item
+
+        animationTimersRef.current.push(timer);
       });
     }
-  }, [isVisible]);
+
+    return () => {
+      // Clear timers when effect cleanup runs
+      animationTimersRef.current.forEach((timer) => clearTimeout(timer));
+      animationTimersRef.current = [];
+    };
+  }, [isVisible, isMounted]);
 
   // Function to determine animation class based on index
   const getAnimationClass = (index) => {
@@ -122,6 +156,13 @@ const Features = () => {
 
     return "animate-slide-in-left";
   };
+
+  // Reset active feature when component unmounts and remounts
+  useEffect(() => {
+    if (isMounted) {
+      setActiveFeature(features[0]);
+    }
+  }, [isMounted]);
 
   return (
     <div
@@ -135,10 +176,10 @@ const Features = () => {
             <h2 className="text-xl font-bold text-white mb-4">
               Our AI Services
             </h2>
-            <div class="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2 lg:gap-y-6">
+            <div className="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2 lg:gap-y-6">
               {features.map((feature, index) => (
                 <div
-                  key={feature.title}
+                  key={`feature-${index}-${feature.title}`}
                   onClick={() => setActiveFeature(feature)}
                   className={`
                     flex-shrink-0 w-auto md:w-full flex items-center p-3 rounded-lg cursor-pointer transition-all
@@ -187,6 +228,7 @@ const Features = () => {
                   minHeight: "250px",
                   maxHeight: "600px",
                 }}
+                key={`feature-image-${activeFeature.title}`}
               />
             </div>
           </div>

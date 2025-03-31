@@ -3,7 +3,7 @@ import how1 from "../assets/how1.svg";
 import how2 from "../assets/how2.svg";
 import how3 from "../assets/how3.svg";
 import ran1 from "../assets/ran1.png";
-import ran3 from "../assets/ran3.gif";
+import ran3 from "../assets/ran1.gif";
 
 const HowItWorks = () => {
   const [rotation, setRotation] = useState(0);
