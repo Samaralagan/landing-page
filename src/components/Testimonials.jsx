@@ -70,7 +70,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black flex flex-col items-center justify-center p-4 overflow-hidden">
+    <div className="relative min-h-screen  flex flex-col items-center justify-center p-4 overflow-hidden">
       <h2 className="text-4xl md:text-5xl font-bold mb-12 md:mb-16 text-center">
         Testimonial
       </h2>

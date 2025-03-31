@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,87 @@ import { Link } from "react-router-dom";
 import iconCore from "../assets/price1.png";
 import iconOverdrive from "../assets/price2.png";
 import iconTeam from "../assets/price3.png";
+
+// Particle component
+const Particles = () => {
+  const canvasRef = useRef(null);
+  const particlesRef = useRef([]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let animationFrameId;
+
+    // Set canvas to full screen
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    // Initialize particles
+    const particleCount = 50;
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 0.5,
+        color: `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(
+          Math.random() * 100 + 155
+        )}, 255, ${Math.random() * 0.5 + 0.1})`,
+        speedX: Math.random() * 0.5 - 0.25,
+        speedY: Math.random() * 0.5 - 0.25,
+      });
+    }
+
+    particlesRef.current = particles;
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particlesRef.current.forEach((particle) => {
+        // Update position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.fill();
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute top-0 left-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
+  );
+};
 
 const SlidingButton = ({ text, featured, textColor, bgColor }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -211,8 +292,11 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050B1A] flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl">
+    <div className="min-h-screen bg-[#050B1A] flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Add particles background */}
+      <Particles />
+
+      <div className="w-full max-w-5xl relative z-10">
         {/* Title */}
         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12">
           Flexible pricing for teams of all sizes

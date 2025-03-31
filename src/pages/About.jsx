@@ -5,7 +5,7 @@ import vision from "../assets/vision.png";
 
 const About = () => {
   return (
-    <div className="bg-black text-white mx-4 md:mx-8 lg:mx-12 xl:mx-16">
+    <div className=" text-white mx-4 md:mx-8 lg:mx-12 xl:mx-16">
       {/* Two-Column Section */}
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 py-12 mt-16 md:mt-20 lg:mt-24">
         {/* Left Column - Heading */}

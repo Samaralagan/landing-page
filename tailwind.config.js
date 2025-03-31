@@ -9,8 +9,8 @@ export default {
         accent: "#58a6ff",
       },
       fontFamily: {
-        sans: ["Orbitron", "sans-serif"], // Make Orbitron the default sans font
-        orbitron: ["Orbitron", "sans-serif"], // Also available as a specific font class
+        sans: ["Inter", "system-ui", "sans-serif"], // Make Inter the default font
+        display: ["Inter", "system-ui", "sans-serif"], // Can use variable weights for headers
       },
     },
   },

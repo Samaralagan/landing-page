@@ -180,7 +180,7 @@ const Hero = () => {
       </div>
 
       {/* Curved Yellow Border - Changed to orange as in the image */}
-      <div className="absolute bottom-0 left-0 right-0 h-2 bg-orange-500" />
+      <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-500" />
 
       {/* Add wave animation styles */}
       <style jsx>{`

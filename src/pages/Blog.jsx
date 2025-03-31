@@ -268,7 +268,7 @@ Hybrid event advantages:
   );
 
   return (
-    <div className="min-h-screen bg-[#0F172A] py-20 px-4">
+    <div className="min-h-screen  py-20 px-4">
       <div className="container mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           {selectedBlog ? "Blog Details" : "Our Latest Blogs"}
