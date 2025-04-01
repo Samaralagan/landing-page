@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import lottie from "lottie-web";
 import testi1 from "../assets/testi1.png";
 import testi2 from "../assets/testi2.png";
 import testi3 from "../assets/testi3.png";
 import testi4 from "../assets/testi4.png";
 import testi5 from "../assets/testi5.png";
-import testibg from "../assets/testibg.jpg";
-import ran4 from "../assets/ran4.gif";
+import testibg from "../assets/testibg.png";
+import ran4 from "../assets/ran4.json"; // Changed from .gif to .json
 
 const testimonials = [
   {
@@ -19,7 +20,7 @@ const testimonials = [
   },
   {
     id: 2,
-    text: "We’ve integrated Calabria Technology's AI-powered tools into our daily workflow, and the results have been exceptional. The AI-powered testing catches bugs before they even become an issue, and the optimized deployment feature ensures our software is always scalable. This platform has significantly enhanced our productivity and reduced downtime during development.",
+    text: "We've integrated Calabria Technology's AI-powered tools into our daily workflow, and the results have been exceptional. The AI-powered testing catches bugs before they even become an issue, and the optimized deployment feature ensures our software is always scalable. This platform has significantly enhanced our productivity and reduced downtime during development.",
     name: "Garcia L.",
     phone: "CTO",
     stars: 4,
@@ -53,6 +54,34 @@ const testimonials = [
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const lottieContainerRef = useRef(null);
+  const lottieAnimationRef = useRef(null);
+
+  // Initialize Lottie animation
+  useEffect(() => {
+    if (lottieContainerRef.current) {
+      // Destroy previous animation if it exists
+      if (lottieAnimationRef.current) {
+        lottieAnimationRef.current.destroy();
+      }
+
+      // Create new animation
+      lottieAnimationRef.current = lottie.loadAnimation({
+        container: lottieContainerRef.current,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: ran4, // Using the imported JSON file
+      });
+
+      // Cleanup on component unmount
+      return () => {
+        if (lottieAnimationRef.current) {
+          lottieAnimationRef.current.destroy();
+        }
+      };
+    }
+  }, []);
 
   const renderStars = (count) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -76,7 +105,7 @@ const Testimonials = () => {
       </h2>
 
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl mx-auto">
-        {/* Left side GIF with effects */}
+        {/* Left side Lottie animation with effects */}
         <motion.div
           className="relative w-full md:w-1/3 flex justify-center md:justify-end mb-8 md:mb-0 md:mr-8"
           initial={{ opacity: 0, x: -100 }}
@@ -95,11 +124,8 @@ const Testimonials = () => {
               ease: "easeInOut",
             }}
           >
-            <img
-              src={ran4}
-              alt="Nutrition Animation"
-              className="w-full h-full object-cover"
-            />
+            {/* Lottie animation container */}
+            <div ref={lottieContainerRef} className="w-full h-full"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
           </motion.div>
           <div className="absolute -inset-4 bg-[rgb(59_130_246_/var(--tw-bg-opacity,_0.2))] rounded-full blur-xl z-[-1]"></div>
@@ -132,7 +158,6 @@ const Testimonials = () => {
                         ? "z-10 top-8 rotate-6 scale-95"
                         : "z-0 top-16 rotate-12 scale-90 opacity-50"
                     }
-                    bg-[url(${testibg})] bg-cover bg-no-repeat
                   `}
                 style={{
                   backgroundImage: `url(${testibg})`,

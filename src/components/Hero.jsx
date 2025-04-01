@@ -126,12 +126,18 @@ const Hero = () => {
 
         {/* Content Container for Desktop */}
         <div className="absolute z-10 inset-0 flex items-center">
-          <div className="ml-32 max-w-xl">
+          <div
+            className="ml-16 max-w-[46rem]
+"
+          >
+            {/* Modified heading to have specific line breaks */}
             <h1 className="text-6xl font-bold mb-6 text-left">
-              Next-Gen Development: Faster Workflow, Fewer Errors
+              <span className="block">Next-Gen Development:</span>
+              <span className="block">Faster Workflow,</span>
+              <span className="block">Fewer Errors</span>
             </h1>
 
-            <blockquote className="italic text-base text-gray-300 mb-8 text-left">
+            <blockquote className="italic text-base text-gray-300 mb-20 text-left">
               Develop, test, and deploy smarter with AI-driven code completion,
               automated testing, and one-click deployment. Revolutionize your
               development experience with cutting-edge AI technology designed

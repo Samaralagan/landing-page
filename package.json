@@ -12,6 +12,7 @@
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
     "framer-motion": "^12.6.2",
+    "lottie-web": "^5.12.2",
     "lucide-react": "^0.484.0",
     "react": "^19.0.0",
     "react-cookie-consent": "^9.0.0",

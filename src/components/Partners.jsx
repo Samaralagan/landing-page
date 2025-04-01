@@ -4,10 +4,8 @@ import par1 from "../assets/par1.png";
 import par2 from "../assets/par2.png";
 import par3 from "../assets/par3.png";
 import par4 from "../assets/par4.png";
-import par5 from "../assets/par8.png";
+import par5 from "../assets/par5.png";
 import par6 from "../assets/par6.png";
-import par7 from "../assets/par7.png";
-// import par8 from "../assets/par8.png";
 
 const Partners = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -17,38 +15,38 @@ const Partners = () => {
   const partnerLogos = [
     {
       src: par1,
-      alt: "Partner 1",
-      link: "https://partner1.com",
+      alt: "Open AI",
+      link: "https://openai.com/",
     },
     {
       src: par2,
-      alt: "Partner 2",
-      link: "https://partner2.com",
+      alt: "Cloud Flare",
+      link: "https://www.cloudflare.com/en-gb/",
     },
     {
       src: par3,
-      alt: "Partner 3",
-      link: "https://partner3.com",
+      alt: "Pay Pal",
+      link: "https://www.paypal.com/fr/home",
     },
     {
       src: par4,
-      alt: "Partner 4",
-      link: "https://partner4.com",
+      alt: "Git Hub",
+      link: "https://github.com/",
     },
     {
       src: par5,
-      alt: "Partner 5",
-      link: "https://partner5.com",
+      alt: "Jira",
+      link: "https://www.atlassian.com/?clickid=QVpUDp071xycW4u0tbx%3AHw3XUksy3BSNR0gFyQ0&irgwc=1&utm_medium=paid-affiliate&utm_source=impact&ircid=17715&irpid=29332&irmpname=FlexOffers.com%2C%20LLC&irmptype=mediapartner&irshareid=1257364&irmpgroupname=%22Non-Tech%20Sub-Affiliate%20Networks%22&iraid=1548455&utm_content=N%2FA---No-U-value_image-campaign-brand-default-na-120x90-na-jsm-1548455&irclkid=QVpUDp071xycW4u0tbx%3AHw3XUksy3BSNR0gFyQ0&utm_campaign=P%3Ajsm%7CO%3Appm%7CV%3Aimpact%7CG%3Aus%7CL%3Aen%7CF%3Aaware%7CT%3Ainterest%7CA%3Aimage%7CD%3Aalld&gad_source=1&gclid=Cj0KCQjwna6_BhCbARIsALId2Z18-jMHpmoZUNTR774cFLL1EPfkUpmcOWopddqcW1QH7CTtT8VkX9UaApDVEALw_wcB",
     },
     {
       src: par6,
-      alt: "Partner 6",
-      link: "https://partner6.com",
+      alt: "Sentry",
+      link: "https://sentry.io/welcome/",
     },
     {
-      src: par7,
-      alt: "Partner 7",
-      link: "https://partner7.com",
+      src: par6,
+      alt: "Sentry",
+      link: "https://sentry.io/welcome/",
     },
   ];
 

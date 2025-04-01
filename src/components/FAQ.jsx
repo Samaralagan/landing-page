@@ -178,40 +178,30 @@ const FAQ = () => {
             For more details on AI-powered software development solutions and
             personalized pricing choices, get in contact with us.
           </p>
-          <Link to="/contact" className="inline-block">
-            {/* Wave Effect Button with Synchronized Border Radius Change */}
-            <a
-              className={`wave-button bg-[rgb(59_130_246_/var(--tw-bg-opacity,1))] text-white px-8 py-3 transition-all duration-500 relative overflow-hidden inline-block ${
-                waveButtonHover
-                  ? "rounded-[0rem_0.75rem_0rem_0.75rem]"
-                  : "rounded-[0.75rem_0rem_0.75rem_0rem]"
-              }`}
-              onMouseEnter={() => setWaveButtonHover(true)}
-              onMouseLeave={() => setWaveButtonHover(false)}
-              href="javascript:void(0);"
-              onClick={(e) => {
-                e.preventDefault();
-                // Your navigation logic here
-              }}
+          <Link
+            to="/contact"
+            className={`wave-button bg-[rgb(59_130_246_/var(--tw-bg-opacity,1))] text-white px-8 py-3 transition-all duration-500 relative overflow-hidden inline-block ${
+              waveButtonHover
+                ? "rounded-[0rem_0.75rem_0rem_0.75rem]"
+                : "rounded-[0.75rem_0rem_0.75rem_0rem]"
+            }`}
+            onMouseEnter={() => setWaveButtonHover(true)}
+            onMouseLeave={() => setWaveButtonHover(false)}
+          >
+            <span className="relative z-10">CONTACT US</span>
+            <div
+              className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+              style={{ height: waveButtonHover ? "100%" : "0%" }}
             >
-              <span className="relative z-10">CONTACT US</span>
-
               <div
-                className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+                className="wave-before absolute w-full h-[22px] bottom-full left-0"
                 style={{
-                  height: waveButtonHover ? "100%" : "0%",
+                  backgroundImage: `url(${waveImageUrl})`,
+                  backgroundSize: "contain",
+                  animation: "wave 2s linear infinite",
                 }}
-              >
-                <div
-                  className="wave-before absolute w-full h-[22px] bottom-full left-0"
-                  style={{
-                    backgroundImage: `url(${waveImageUrl})`,
-                    backgroundSize: "contain",
-                    animation: "wave 2s linear infinite",
-                  }}
-                />
-              </div>
-            </a>
+              />
+            </div>
           </Link>
         </div>
       </div>

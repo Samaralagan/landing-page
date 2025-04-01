@@ -85,27 +85,28 @@ const About = () => {
           <div className="block lg:hidden">
             {[
               {
-                year: 2010,
+                year: 2022,
                 title: "Founding",
                 description:
-                  "Established with a vision to revolutionize event management.",
+                  "Established with a vision to transform software development using AI agents to automate substantial workloads and facilitate development teams.",
               },
               {
-                year: 2015,
-                title: "First Major Expansion",
-                description: "Expanded national operations and client base.",
-              },
-              {
-                year: 2020,
-                title: "Digital Transformation",
+                year: 2023,
+                title: "AI Integration",
                 description:
-                  "Integrated cutting-edge technology into event planning.",
+                  "Integrated AI-driven code generation and automatic bug fixes to streamline development procedures.",
+              },
+              {
+                year: 2024,
+                title: "Platform Expansion",
+                description:
+                  "Launched a complete platform integrating AI for live testing, optimization, and deployment, open to the world.",
               },
               {
                 year: 2025,
                 title: "Global Reach",
                 description:
-                  "Became a leading global event management platform.",
+                  "Evolved as a leading platform for software development using AI, offering scalable solutions for enterprises globally.",
               },
             ].map((item) => (
               <div key={item.year} className="mb-8 p-6 bg-[#111] rounded-lg">
