@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import heroBg from "../assets/herobg.jpg";
 import React, { useState } from "react";
+import { Link as LucideLink } from "lucide-react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const SlidingButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,97 +12,101 @@ const SlidingButton = () => {
     "https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fbtn-wave.png?alt=media&token=267962fb-78ee-4fcb-a559-034579dc675d";
 
   return (
-    <button
-      className={`
-        relative flex items-center w-48 h-14 bg-blue-500 overflow-hidden group
-        transition-all duration-500 ease-in-out
-        ${
-          isHovered
-            ? "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
-            : "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
-        }
-      `}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Wave Effect */}
-      <div
-        className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
-        style={{
-          height: isHovered ? "100%" : "0%",
-          zIndex: 0,
-        }}
+    <Link to="/contact" className="no-underline">
+      {" "}
+      {/* Wrap button with Link component */}
+      <button
+        className={`
+          relative flex items-center w-48 h-14 bg-blue-500 overflow-hidden group
+          transition-all duration-500 ease-in-out
+          ${
+            isHovered
+              ? "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
+              : "rounded-[1.5rem_1.5rem_1.5rem_1.5rem]"
+          }
+        `}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
+        {/* Wave Effect */}
         <div
-          className="wave-before absolute w-full h-[22px] bottom-full left-0"
+          className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
           style={{
-            backgroundImage: `url(${waveImageUrl})`,
-            backgroundSize: "contain",
-            animation: "wave 2s linear infinite",
+            height: isHovered ? "100%" : "0%",
             zIndex: 0,
           }}
-        />
-      </div>
-
-      {/* Sliding Circle */}
-      <div
-        className={`
-          absolute left-0 top-1/2 -translate-y-1/2 
-          w-14 h-14 bg-white rounded-full 
-          transition-all duration-500 ease-in-out z-10
-          ${isHovered ? "translate-x-[calc(100%+5rem)]" : "translate-x-0"}
-        `}
-      >
-        {/* Arrow or Icon inside the circle */}
-        <div className="flex items-center justify-center w-full h-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-blue-500"
-          >
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+        >
+          <div
+            className="wave-before absolute w-full h-[22px] bottom-full left-0"
+            style={{
+              backgroundImage: `url(${waveImageUrl})`,
+              backgroundSize: "contain",
+              animation: "wave 2s linear infinite",
+              zIndex: 0,
+            }}
+          />
         </div>
-      </div>
 
-      {/* Button Text */}
-      <span
-        className={`
-          absolute w-full text-white font-semibold z-10
-          transition-all duration-500 ease-in-out
-          ${
-            isHovered
-              ? "translate-x-[-50%] opacity-0"
-              : "translate-x-0 opacity-100"
-          }
-        `}
-      >
-        GetStarted
-      </span>
+        {/* Sliding Circle */}
+        <div
+          className={`
+            absolute left-0 top-1/2 -translate-y-1/2 
+            w-14 h-14 bg-white rounded-full 
+            transition-all duration-500 ease-in-out z-10
+            ${isHovered ? "translate-x-[calc(100%+5rem)]" : "translate-x-0"}
+          `}
+        >
+          {/* Arrow or Icon inside the circle */}
+          <div className="flex items-center justify-center w-full h-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-blue-500"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
 
-      {/* Hovered Text */}
-      <span
-        className={`
-          absolute w-full text-white font-semibold z-10
-          transition-all duration-500 ease-in-out
-          ${
-            isHovered
-              ? "translate-x-0 opacity-100"
-              : "translate-x-[50%] opacity-0"
-          }
-        `}
-      >
-        GetStarted
-      </span>
-    </button>
+        {/* Button Text */}
+        <span
+          className={`
+            absolute w-full text-white font-semibold z-10
+            transition-all duration-500 ease-in-out
+            ${
+              isHovered
+                ? "translate-x-[-50%] opacity-0"
+                : "translate-x-0 opacity-100"
+            }
+          `}
+        >
+          GetStarted
+        </span>
+
+        {/* Hovered Text */}
+        <span
+          className={`
+            absolute w-full text-white font-semibold z-10
+            transition-all duration-500 ease-in-out
+            ${
+              isHovered
+                ? "translate-x-0 opacity-100"
+                : "translate-x-[50%] opacity-0"
+            }
+          `}
+        >
+          GetStarted
+        </span>
+      </button>
+    </Link>
   );
 };
 

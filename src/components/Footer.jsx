@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Youtube, X, Linkedin } from "lucide-react";
 import LogoFooter from "../assets/logowhite.png"; // Update this import path
 
 const Footer = () => {
@@ -95,22 +95,28 @@ const Footer = () => {
 
           <div className="flex space-x-4">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61575018712518"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Facebook size={24} />
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/@CalabriaTechnology"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
-              <Instagram size={24} />
+              <Youtube size={24} />
             </a>
             <a
-              href="#"
+              href="https://x.com/CalabriaTech"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
-              <Twitter size={24} />
+              <X size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/calabriatechnology/"
+              className="text-gray-300 hover:text-blue-400 transition-colors"
+            >
+              <Linkedin size={24} />
             </a>
           </div>
         </div>

@@ -6,6 +6,7 @@ import par3 from "../assets/par3.png";
 import par4 from "../assets/par4.png";
 import par5 from "../assets/par5.png";
 import par6 from "../assets/par6.png";
+import par7 from "../assets/par7.png";
 
 const Partners = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -43,10 +44,11 @@ const Partners = () => {
       alt: "Sentry",
       link: "https://sentry.io/welcome/",
     },
+
     {
-      src: par6,
-      alt: "Sentry",
-      link: "https://sentry.io/welcome/",
+      src: par7,
+      alt: "Codeium",
+      link: "https://codeium.com/",
     },
   ];
 

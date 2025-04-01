@@ -4,8 +4,8 @@ import {
   Phone,
   MapPin,
   Facebook,
-  Twitter,
-  Instagram,
+  Youtube,
+  X,
   Linkedin,
 } from "lucide-react";
 
@@ -16,6 +16,12 @@ const Contact = () => {
     message: "",
   });
 
+  const [status, setStatus] = useState({
+    submitting: false,
+    success: null,
+    error: null,
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -24,13 +30,47 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    // Set submitting state
+    setStatus({ submitting: true, success: null, error: null });
+
+    try {
+      // Local PHP endpoint URL - adjust the port if your PHP server runs on different port
+      const response = await fetch("http://localhost/api/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Reset form on success
+        setFormData({ name: "", email: "", message: "" });
+        setStatus({
+          submitting: false,
+          success: data.message,
+          error: null,
+        });
+      } else {
+        throw new Error(data.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending form:", error);
+      setStatus({
+        submitting: false,
+        success: null,
+        error: error.message || "An unexpected error occurred",
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen  text-white pt-24 px-4 overflow-x-hidden">
+    <div className="min-h-screen text-white pt-24 px-4 overflow-x-hidden">
       <div className="container mx-auto grid md:grid-cols-2 gap-8 max-w-6xl">
         {/* Contact Information Section */}
         <div className="bg-gray-900 p-8 rounded-lg shadow-2xl border border-blue-500/30">
@@ -73,16 +113,28 @@ const Contact = () => {
 
           {/* Social Media Icons */}
           <div className="mt-8 flex space-x-6">
-            <a href="#" className="hover:text-blue-500 transition-colors">
+            <a
+              href="https://www.facebook.com/profile.php?id=61575018712518"
+              className="hover:text-blue-500 transition-colors"
+            >
               <Facebook className="w-8 h-8" />
             </a>
-            <a href="#" className="hover:text-blue-500 transition-colors">
-              <Twitter className="w-8 h-8" />
+            <a
+              href="https://www.youtube.com/@CalabriaTechnology"
+              className="hover:text-blue-500 transition-colors"
+            >
+              <Youtube className="w-8 h-8" />
             </a>
-            <a href="#" className="hover:text-blue-500 transition-colors">
-              <Instagram className="w-8 h-8" />
+            <a
+              href="https://x.com/CalabriaTech"
+              className="hover:text-blue-500 transition-colors"
+            >
+              <X className="w-8 h-8" />
             </a>
-            <a href="#" className="hover:text-blue-500 transition-colors">
+            <a
+              href="https://www.linkedin.com/company/calabriatechnology/"
+              className="hover:text-blue-500 transition-colors"
+            >
               <Linkedin className="w-8 h-8" />
             </a>
           </div>
@@ -93,6 +145,19 @@ const Contact = () => {
           <h2 className="text-3xl font-bold mb-6 text-blue-500">
             Send Us a Message
           </h2>
+
+          {status.success && (
+            <div className="mb-4 p-3 bg-green-500/20 border border-green-500 rounded-lg text-green-400">
+              {status.success}
+            </div>
+          )}
+
+          {status.error && (
+            <div className="mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-400">
+              {status.error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-2">
@@ -138,9 +203,14 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors"
+              disabled={status.submitting}
+              className={`w-full bg-blue-500 text-white py-3 rounded-lg transition-colors ${
+                status.submitting
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:bg-blue-600"
+              }`}
             >
-              Send Message
+              {status.submitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
@@ -161,7 +231,6 @@ const Contact = () => {
               allowFullScreen=""
               loading="lazy"
             ></iframe>
-            {/* <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
           </div>
         </div>
       </div>
