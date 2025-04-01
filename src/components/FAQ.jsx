@@ -12,29 +12,31 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "Getting a JavaScript console error",
+      question: "How is code generation by AI done?",
       answer:
-        "JavaScript console errors can occur due to various reasons such as syntax errors, undefined variables, or network issues. We recommend checking the specific error message and reviewing your code carefully.",
+        "The AI code generation uses advanced algorithms to create code snippets based on your requirements automatically. Simply describe your requirements, and the AI will produce optimized, error-free code as per your requirements, saving time and effort during development.",
     },
     {
-      question: "Accepted currencies for product billing",
+      question: "Can AI really debug while developing?",
       answer:
-        "We currently accept major currencies including USD, EUR, GBP, and several others. Our payment system supports multiple international payment methods to ensure convenient transactions.",
+        "Yes, Calabria Technology automated testing and fixing bugs with AI to detect bugs automatically and also fix them while you build it. The AI tests your code automatically in real time so your bugs get fixed before delays get created so you can keep your focus to build new features.",
     },
     {
-      question: "Cancelling a website subscription",
+      question: "How does deployment optimization work?",
       answer:
-        "To cancel your website subscription, log into your account, navigate to the billing section, and select the 'Cancel Subscription' option. We recommend reviewing our cancellation policy for any potential prorated refunds.",
+        "Our machine learning-based technology scans the code and optimizes it for scalability and performance prior to deployment. So your app will be faster, receive more traffic, and scale wonderfully with a larger user base.",
     },
     {
-      question: "Setting up new domain and page",
+      question:
+        "What are collaborative development tools, and how do they work?",
       answer:
-        "Setting up a new domain involves purchasing a domain name, configuring DNS settings, and linking it to your hosting provider. Our support team can guide you through this process step by step.",
+        "Collaborative development features are part of mainstream version control tools like Git, and they allow teams to code on projects in real-time. With version tracking, code review, and seamless collaboration, your team can collaborate more efficiently wherever they are.",
     },
     {
-      question: "Getting started with our application",
+      question:
+        "How do development workflows benefit from real-time analytics?",
       answer:
-        "To get started, create an account, choose a subscription plan, and follow our onboarding tutorial. Our comprehensive documentation and support team are available to assist you throughout the process.",
+        "Real-time analytics provide you with real-time insights into your development path. The AI platform tracks critical performance indicators, identifies bottlenecks, and suggests optimizations to drive team productivity, automate workflows, and eliminate unwanted delays.",
     },
   ];
 
@@ -128,7 +130,7 @@ const FAQ = () => {
     <div className=" min-h-screen py-16 px-4" ref={faqContainerRef}>
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold text-white text-center mb-12">
-          Featured Articles
+          Got Questions? We’ve Got Answers!
         </h2>
 
         <div className="space-y-4">
@@ -170,11 +172,11 @@ const FAQ = () => {
 
         <div className="mt-16 text-center">
           <h3 className="text-2xl text-white mb-4">
-            Didn't find an answer to your question?
+            Have You Not Found What You're Searching for?
           </h3>
           <p className="text-gray-400 mb-6">
-            Get in touch with us for details on additional services and custom
-            work pricing
+            For more details on AI-powered software development solutions and
+            personalized pricing choices, get in contact with us.
           </p>
           <Link to="/contact" className="inline-block">
             {/* Wave Effect Button with Synchronized Border Radius Change */}

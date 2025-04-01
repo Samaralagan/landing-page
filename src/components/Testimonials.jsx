@@ -11,41 +11,41 @@ import ran4 from "../assets/ran4.gif";
 const testimonials = [
   {
     id: 1,
-    text: "Hi Aunty, I am your youngest client or student to start diet with you because I was pre-diabetic & obese because I was very pampered. It was so impossible in the starting. Papa was writing this months from my side but I thought I should do it. I'm big friends. Lost 12 kgs in 3 months and look smarter and become popular in your speciality is the school tiffin food. I am happy to be healthy and fit.",
-    name: "Roohika",
-    phone: "8800704223",
+    text: "Calabria Technology has completely revolutionized our development process. Their AI-powered code generation and bug-fixing tool helped us speed up our deployment cycle and reduce errors exponentially. Their real-time analytics helped us optimize workflows, making our team more productive than ever before. We've never had a smoother adoption of AI in software development.",
+    name: "Benjamin M.",
+    phone: "Lead Developer",
     stars: 5,
     image: testi1, // Replace with actual image path
   },
   {
     id: 2,
-    text: "Another amazing testimonial about transformative experience and personal growth through nutrition guidance. Experienced significant improvements in my overall health and wellness approach.",
-    name: "Sarah Johnson",
-    phone: "1234567890",
+    text: "We’ve integrated Calabria Technology's AI-powered tools into our daily workflow, and the results have been exceptional. The AI-powered testing catches bugs before they even become an issue, and the optimized deployment feature ensures our software is always scalable. This platform has significantly enhanced our productivity and reduced downtime during development.",
+    name: "Garcia L.",
+    phone: "CTO",
     stars: 4,
     image: testi2, // Replace with actual image path
   },
   {
     id: 3,
-    text: "Hi Aunty, I am your youngest client or student to start diet with you because I was pre-diabetic & obese because I was very pampered. It was so impossible in the starting. Papa was writing this months from my side but I thought I should do it. I'm big friends. Lost 12 kgs in 3 months and look smarter and become popular in your speciality is the school tiffin food. I am happy to be healthy and fit.",
-    name: "Roohika",
-    phone: "8800704223",
+    text: "As a coder, I was initially hesitant to use AI to write code. But as soon as I began testing Calabria Technology's software tools, I was amazed at how simple and powerful they are. The AI software is incredibly accurate, and the ability to work together as a team makes teamwork a snap. This is the future of coding, and I can't wait to see what is next.",
+    name: "Takahashi T.",
+    phone: "Senior Software Engineer",
     stars: 5,
     image: testi3, // Replace with actual image path
   },
   {
     id: 4,
-    text: "Third testimonial highlighting the incredible impact of personalized nutrition and diet planning. Discovered a completely new way of understanding my body's nutritional needs.",
-    name: "Michael Chen",
-    phone: "9876543210",
+    text: "Calabria Technology has changed the game for how our team operates in software development. The AI-assisted code generation feature enables us to significantly cut down our project timelines, while the auto bug finder keeps our code free from bugs and optimized. This platform has been a game-changer for us indeed!",
+    name: "Isabella R.",
+    phone: "Product Manager",
     stars: 5,
     image: testi4, // Replace with actual image path
   },
   {
     id: 5,
-    text: "Hi Aunty, I am your youngest client or student to start diet with you because I was pre-diabetic & obese because I was very pampered. It was so impossible in the starting. Papa was writing this months from my side but I thought I should do it. I'm big friends. Lost 12 kgs in 3 months and look smarter and become popular in your speciality is the school tiffin food. I am happy to be healthy and fit.",
-    name: "Roohika",
-    phone: "8800704223",
+    text: "I have used a few AI-based development tools previously, but nothing even comes close to the productivity of Calabria Technology. The seamless integration with our existing workflow, real-time analytics, and AI-driven deployment optimization have improved our software delivery process greatly. I would highly recommend it to any development team looking to scale.",
+    name: "Rodrigo K.",
+    phone: "DevOps Engineer",
     stars: 5,
     image: testi5, // Replace with actual image path
   },
@@ -72,7 +72,7 @@ const Testimonials = () => {
   return (
     <div className="relative min-h-screen  flex flex-col items-center justify-center p-4 overflow-hidden">
       <h2 className="text-4xl md:text-5xl font-bold mb-12 md:mb-16 text-center">
-        Testimonial
+        See What Our Clients Are Saying About US
       </h2>
 
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl mx-auto">

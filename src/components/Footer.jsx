@@ -12,9 +12,9 @@ const Footer = () => {
             <img src={LogoFooter} alt="Logo" className="h-8 w-auto" />
           </div>
           <p className="text-gray-300 text-sm">
-            Streamline your business financial management with our intuitive,
-            scalable SaaS platform. Designed for US enterprises, our solutions
-            simplify complex processes.
+            Transform your software development process with our AI-powered
+            platform. Streamline code generation, bug fixing, deployment, and
+            collaboration for enhanced productivity and scalability.
           </p>
         </div>
 
@@ -23,14 +23,14 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
           <ul className="grid grid-cols-2 lg:grid-cols-2 gap-4">
             <li>
-              <a href="/" className="hover:text-purple-400 transition-colors">
+              <a href="/" className="hover:text-blue-400 transition-colors">
                 Home
               </a>
             </li>
             <li>
               <a
                 href="/about"
-                className="hover:text-purple-400 transition-colors"
+                className="hover:text-blue-400 transition-colors"
               >
                 About
               </a>
@@ -38,7 +38,7 @@ const Footer = () => {
             <li>
               <a
                 href="/contact"
-                className="hover:text-purple-400 transition-colors"
+                className="hover:text-blue-400 transition-colors"
               >
                 Contact
               </a>
@@ -46,23 +46,20 @@ const Footer = () => {
             <li>
               <a
                 href="/PricingTable"
-                className="hover:text-purple-400 transition-colors"
+                className="hover:text-blue-400 transition-colors"
               >
                 Pricing Table
               </a>
             </li>
             <li>
-              <a
-                href="/blog"
-                className="hover:text-purple-400 transition-colors"
-              >
+              <a href="/blog" className="hover:text-blue-400 transition-colors">
                 Blogs
               </a>
             </li>
             <li>
               <a
                 href="/Terms"
-                className="hover:text-purple-400 transition-colors"
+                className="hover:text-blue-400 transition-colors"
               >
                 Terms & Conditions
               </a>
@@ -70,7 +67,7 @@ const Footer = () => {
             <li>
               <a
                 href="/privacy-policy"
-                className="hover:text-purple-400 transition-colors"
+                className="hover:text-blue-400 transition-colors"
               >
                 Privacy Policy
               </a>
@@ -88,9 +85,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="bg-[#1A1A2E] text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 w-full"
+                className="bg-[#1A1A2E] text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
               />
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg transition-colors">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg transition-colors">
                 Subscribe
               </button>
             </div>
@@ -99,19 +96,19 @@ const Footer = () => {
           <div className="flex space-x-4">
             <a
               href="#"
-              className="text-gray-300 hover:text-purple-400 transition-colors"
+              className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Facebook size={24} />
             </a>
             <a
               href="#"
-              className="text-gray-300 hover:text-purple-400 transition-colors"
+              className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Instagram size={24} />
             </a>
             <a
               href="#"
-              className="text-gray-300 hover:text-purple-400 transition-colors"
+              className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Twitter size={24} />
             </a>

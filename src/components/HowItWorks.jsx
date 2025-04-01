@@ -52,21 +52,23 @@ const HowItWorks = () => {
   const boxes = [
     {
       id: 1,
-      title: "What's in the Box?",
+      title: "Automated Code Generation",
       description:
-        "Discover coffee pouches, classic or flavored options, and creamer packets.",
+        "AI generates optimized code instantly based on your input, speeding up development.",
       icon: how1,
     },
     {
       id: 2,
-      title: "FLIP-FLOP HUB",
-      description: "A hub that allows you to change gear styles with ease.",
+      title: "AI-Powered Testing & Bug Fixing",
+      description:
+        "Detects and resolves bugs automatically during development, ensuring smooth progress.",
       icon: how2,
     },
     {
       id: 3,
-      title: "THE ULTIMATE SLEEPING EXPERIENCE",
-      description: "Luxury pillows with goose down and high-end materials.",
+      title: "Optimized Deployment & Analytics",
+      description:
+        "Deploy optimized code and monitor real-time performance, boosting overall efficiency.",
       icon: how3,
     },
   ];

@@ -11,47 +11,57 @@ import fea2 from "../assets/fea2.png";
 import fea3 from "../assets/fea3.png";
 import fea4 from "../assets/fea4.png";
 import fea5 from "../assets/fea5.png";
+import ser1 from "../assets/ser1.svg";
+import ser2 from "../assets/ser2.svg";
+import ser3 from "../assets/ser3.svg";
+import ser4 from "../assets/ser4.svg";
+import ser5 from "../assets/ser5.svg";
 
 const Features = () => {
   const features = [
     {
-      title: "AI Text Generator",
+      title: "AI Code Generation",
       description:
-        "Say goodbye to writer's block. Generate high-quality, engaging text instantly with our advanced AI writing assistant. Perfect for blogs, articles, marketing copy, and creative writing.",
-      subtitle: "Say goodbye to writer's block · AI",
-      icon: Type,
+        "Speed up development with AI that generates high-quality, optimized code in seconds. Reduce manual effort and focus on innovation.",
+      subtitle: "Speed up development with AI",
+      icon: Code, // Using Lucide icon as fallback
+      iconSrc: ser1,
       image: fea1,
     },
     {
-      title: "AI Image Generator",
+      title: "AI Testing & Bug Fixing",
       description:
-        "Transform your ideas into stunning visuals. Our AI image generation tool creates unique, high-resolution images based on your text descriptions, helping you bring creativity to life.",
-      subtitle: "Create visual content instantly · AI",
-      icon: ImageIcon,
+        "Enhance software reliability with AI that detects, analyzes, and fixes bugs automatically, cutting down debugging time and improving performance.",
+      subtitle: "Enhance software reliability with AI",
+      icon: Mic, // Using Lucide icon as fallback
+      iconSrc: ser2,
       image: fea2,
     },
     {
-      title: "AI Code Generator",
+      title: "AI Code Deployment",
       description:
-        "Accelerate your development process with AI-powered code generation. Write clean, efficient code across multiple programming languages with intelligent suggestions and complete code blocks.",
-      subtitle: "Write code with AI assistance · AI",
-      icon: Code,
+        "Deploy applications effortlessly with AI-driven pipelines that ensure secure, scalable, and automated releases—no manual intervention needed.",
+      subtitle: "Deploy applications effortlessly with AI",
+      icon: Type, // Using Lucide icon as fallback
+      iconSrc: ser3,
       image: fea3,
     },
     {
-      title: "AI Chat Bot",
+      title: "AI Collaborative Dev Tools",
       description:
-        "Engage with an intelligent conversational assistant that understands context, provides instant responses, and helps with a wide range of tasks from customer support to personal assistance.",
-      subtitle: "Intelligent conversation partner · AI",
-      icon: MessageCircle,
+        "Boost productivity with AI-powered tools that streamline teamwork, enforce coding standards, and simplify collaboration across distributed teams.",
+      subtitle: "Boost productivity with AI",
+      icon: MessageCircle, // Using Lucide icon as fallback
+      iconSrc: ser4,
       image: fea4,
     },
     {
-      title: "AI Speech to Text",
+      title: "AI Real-Time Analytics & Collaboration",
       description:
-        "Convert spoken words into accurate, formatted text with our advanced speech recognition technology. Supports multiple languages and handles complex vocabulary with ease.",
-      subtitle: "Convert speech to written text · AI",
-      icon: Mic,
+        "Make informed decisions with AI-driven real-time insights that monitor performance, optimize processes, and ensure efficiency at every stage.",
+      subtitle: "Make informed decisions with AI",
+      icon: ImageIcon, // Using Lucide icon as fallback
+      iconSrc: ser5,
       image: fea5,
     },
   ];
@@ -164,6 +174,28 @@ const Features = () => {
     }
   }, [isMounted]);
 
+  // Render feature icon (either SVG image or Lucide fallback)
+  const renderFeatureIcon = (feature) => {
+    const IconComponent = feature.icon;
+
+    return (
+      <>
+        {/* Display the SVG image if it loaded correctly */}
+        <img
+          src={feature.iconSrc}
+          alt=""
+          className="mr-2 w-6 h-6"
+          onError={(e) => {
+            e.target.style.display = "none";
+            e.target.nextSibling.style.display = "block";
+          }}
+        />
+        {/* Fallback to Lucide icon (initially hidden) */}
+        <IconComponent className="mr-2 hidden" size={18} />
+      </>
+    );
+  };
+
   return (
     <div
       className="bg-gradient-to-b from-black via-gray-900 to-black"
@@ -174,7 +206,7 @@ const Features = () => {
           {/* Services Navigation */}
           <div className="bg-white/5 backdrop-blur-sm p-4 sm:p-6">
             <h2 className="text-xl font-bold text-white mb-4">
-              Our AI Services
+              AI-Powered Tools for Next-Level Development
             </h2>
             <div className="flex flex-row overflow-x-auto lg:flex-col lg:overflow-visible pb-2 gap-2 lg:gap-y-6">
               {features.map((feature, index) => (
@@ -192,7 +224,7 @@ const Features = () => {
                     ${getAnimationClass(index)}
                   `}
                 >
-                  <feature.icon className="mr-2" size={18} />
+                  {renderFeatureIcon(feature)}
                   <div>
                     <span className="font-semibold block text-sm">
                       {feature.title}

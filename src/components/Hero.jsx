@@ -83,7 +83,7 @@ const SlidingButton = () => {
           }
         `}
       >
-        Try demo
+        GetStarted
       </span>
 
       {/* Hovered Text */}
@@ -98,7 +98,7 @@ const SlidingButton = () => {
           }
         `}
       >
-        Try demo
+        GetStarted
       </span>
     </button>
   );
@@ -128,16 +128,14 @@ const Hero = () => {
         <div className="absolute z-10 inset-0 flex items-center">
           <div className="ml-32 max-w-xl">
             <h1 className="text-6xl font-bold mb-6 text-left">
-              Revealing the Treasures of the Universe
+              Next-Gen Development: Faster Workflow, Fewer Errors
             </h1>
 
             <blockquote className="italic text-base text-gray-300 mb-8 text-left">
-              "You want to wake up in the morning and think the future is going
-              to be great - and that's what being a spacefaring civilization is
-              all about. It's about believing in the future and thinking that
-              the future will be better than the past. And I can't think of
-              anything more exciting than going out there and being among the
-              stars." - Elon Musk
+              Develop, test, and deploy smarter with AI-driven code completion,
+              automated testing, and one-click deployment. Revolutionize your
+              development experience with cutting-edge AI technology designed
+              for speed, productivity, and predictability.
             </blockquote>
 
             <div className="flex items-center space-x-4">
@@ -161,16 +159,14 @@ const Hero = () => {
         {/* Content Container - Reduced padding and made height auto with min-height */}
         <div className="px-6 md:px-20 py-8 bg-black flex-1 flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-left">
-            Revealing the Treasures of the Universe
+            Next-Gen Development: Faster Workflow, Fewer Errors
           </h1>
 
           <blockquote className="italic text-sm md:text-base text-gray-300 mb-6 text-left">
-            "You want to wake up in the morning and think the future is going to
-            be great - and that's what being a spacefaring civilization is all
-            about. It's about believing in the future and thinking that the
-            future will be better than the past. And I can't think of anything
-            more exciting than going out there and being among the stars." -
-            Elon Musk
+            Develop, test, and deploy smarter with AI-driven code completion,
+            automated testing, and one-click deployment. Revolutionize your
+            development experience with cutting-edge AI technology designed for
+            speed, productivity, and predictability.
           </blockquote>
 
           <div className="flex items-center space-x-4 mb-4">

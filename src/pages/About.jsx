@@ -18,8 +18,9 @@ const About = () => {
               </span>
             </h1>
             <p className="text-base md:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0">
-              Pioneering exceptional event experiences through innovative
-              solutions and unparalleled expertise.
+              Building the future of software development through the adoption
+              of AI-based solutions for increased efficiency, performance, and
+              scalability.
             </p>
           </div>
         </div>
@@ -38,11 +39,12 @@ const About = () => {
               </div>
               <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
                 <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
-                  Mission
+                  Innovation in Software Development
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
-                  Transforming event experiences with cutting-edge technology
-                  and creative strategies.
+                  Revolutionizing the software development life cycle by
+                  employing intelligent AI agents, transforming coding, testing,
+                  bug fixing, and deployment processes.
                 </p>
               </div>
             </div>
@@ -60,11 +62,12 @@ const About = () => {
               </div>
               <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
                 <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
-                  vision
+                  Strategic Approach
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
-                  Delivering tailored event solutions that exceed expectations
-                  and drive success.
+                  Offering AI-based solutions that automate core development
+                  processes, enhance productivity, and provide maximum
+                  performance in any sector.
                 </p>
               </div>
             </div>
