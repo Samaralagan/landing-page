@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
+    "axios": "^1.8.4",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "framer-motion": "^12.6.2",
     "lottie-web": "^5.12.2",
     "lucide-react": "^0.484.0",

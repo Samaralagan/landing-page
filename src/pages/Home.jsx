@@ -7,6 +7,7 @@ import Pricing from "../components/Pricing";
 import Partners from "../components/Partners";
 import Features from "../components/Features";
 import FAQ from "../components/FAQ";
+import Blogs from "../components/Blogs";
 
 // Zoom Animation Wrapper Component
 const ZoomAnimationWrapper = ({ children }) => {
@@ -85,6 +86,10 @@ const Home = () => {
 
       <ZoomAnimationWrapper>
         <Pricing />
+      </ZoomAnimationWrapper>
+
+      <ZoomAnimationWrapper>
+        <Blogs />
       </ZoomAnimationWrapper>
 
       <ZoomAnimationWrapper>
