@@ -40,7 +40,7 @@ const Features = () => {
     {
       title: "AI Code Deployment",
       description:
-        "Deploy applications effortlessly with AI-driven pipelines that ensure secure, scalable, and automated releases—no intervention needed.",
+        "Deploy applications effortlessly with AI-driven pipelines that ensure secure, scalable, and automated releases—no intervention.",
       subtitle: "Deploy applications effortlessly with AI",
       icon: Type, // Using Lucide icon as fallback
       iconSrc: ser3,
@@ -49,7 +49,7 @@ const Features = () => {
     {
       title: "AI Collaborative Dev Tools",
       description:
-        "Boost productivity with AI-powered tools that streamline teamwork, enforce coding standards, and simplify collaboration across distributed teams.",
+        "Boost productivity with AI-powered tools that streamline teamwork, enforce standards, and simplify collaboration.",
       subtitle: "Boost productivity with AI",
       icon: MessageCircle, // Using Lucide icon as fallback
       iconSrc: ser4,
