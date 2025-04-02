@@ -134,24 +134,25 @@ const About = () => {
                   year: 2022,
                   title: "Founding",
                   description:
-                    "Established with a vision to revolutionize event management.",
+                    "Transformed software development with AI automation.",
                 },
                 {
                   year: 2023,
                   title: "First Major Expansion",
-                  description: "Expanded national operations and client base.",
+                  description:
+                    "Integrated AI-driven code generation and bug fixation.",
                 },
                 {
                   year: 2024,
                   title: "Digital Transformation",
                   description:
-                    "Integrated cutting-edge technology into event planning.",
+                    "Launched an AI for testing, optimization, and deployment.",
                 },
                 {
                   year: 2025,
                   title: "Global Reach",
                   description:
-                    "Became a leading global event management platform.",
+                    "Became a top AI platform with scalable enterprise solutions.",
                 },
               ].map((item, index) => (
                 <motion.div
