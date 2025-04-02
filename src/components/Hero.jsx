@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "../assets/herobg.jpg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as LucideLink } from "lucide-react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
@@ -79,14 +79,11 @@ const SlidingButton = () => {
         {/* Button Text */}
         <span
           className={`
-            absolute w-full text-white font-semibold z-10
-            transition-all duration-500 ease-in-out
-            ${
-              isHovered
-                ? "translate-x-[-50%] opacity-0"
-                : "translate-x-0 opacity-100"
-            }
-          `}
+    absolute w-full text-white font-semibold z-10
+    transition-all duration-500 ease-in-out
+    ${isHovered ? "translate-x-[-50%] opacity-0" : "translate-x-0 opacity-100"}
+  `}
+          style={{ padding: "0px 60px" }}
         >
           GetStarted
         </span>
@@ -94,14 +91,11 @@ const SlidingButton = () => {
         {/* Hovered Text */}
         <span
           className={`
-            absolute w-full text-white font-semibold z-10
-            transition-all duration-500 ease-in-out
-            ${
-              isHovered
-                ? "translate-x-0 opacity-100"
-                : "translate-x-[50%] opacity-0"
-            }
-          `}
+    absolute w-full text-white font-semibold z-10
+    transition-all duration-500 ease-in-out
+    ${isHovered ? "translate-x-0 opacity-100" : "translate-x-[50%] opacity-0"}
+  `}
+          style={{ padding: "0px 60px 0px 43px" }}
         >
           GetStarted
         </span>
@@ -110,10 +104,131 @@ const SlidingButton = () => {
   );
 };
 
+const TypedHeading = () => {
+  const headingLines = [
+    "Next-Gen Development:",
+    "Faster Workflow,",
+    "Fewer Errors",
+  ];
+
+  const [displayedText, setDisplayedText] = useState(["", "", ""]);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [completedCycles, setCompletedCycles] = useState(0);
+
+  useEffect(() => {
+    const typingSpeed = 70; // typing speed in ms
+    const deletingSpeed = 30; // deleting speed in ms
+    const pauseBetweenLines = 1000; // pause after a line is completely typed
+    const pauseBeforeRestart = 2000; // pause before starting over
+
+    if (isTyping) {
+      // If we're typing and haven't reached the end of the current line
+      if (currentCharIndex < headingLines[currentLineIndex].length) {
+        const timer = setTimeout(() => {
+          setDisplayedText((prev) => {
+            const newText = [...prev];
+            newText[currentLineIndex] = headingLines[
+              currentLineIndex
+            ].substring(0, currentCharIndex + 1);
+            return newText;
+          });
+          setCurrentCharIndex((prev) => prev + 1);
+        }, typingSpeed);
+        return () => clearTimeout(timer);
+      }
+      // If we've finished typing the current line
+      else {
+        // If there are more lines to type
+        if (currentLineIndex < headingLines.length - 1) {
+          const timer = setTimeout(() => {
+            setCurrentLineIndex((prev) => prev + 1);
+            setCurrentCharIndex(0);
+          }, pauseBetweenLines);
+          return () => clearTimeout(timer);
+        }
+        // If we've finished typing all lines
+        else {
+          const timer = setTimeout(() => {
+            // After displaying all lines completely, start deleting
+            setIsTyping(false);
+            setIsDeleting(true);
+            setCurrentLineIndex(headingLines.length - 1);
+          }, pauseBeforeRestart);
+          return () => clearTimeout(timer);
+        }
+      }
+    }
+
+    if (isDeleting) {
+      // If the current line still has text to delete
+      if (displayedText[currentLineIndex].length > 0) {
+        const timer = setTimeout(() => {
+          setDisplayedText((prev) => {
+            const newText = [...prev];
+            newText[currentLineIndex] = newText[currentLineIndex].substring(
+              0,
+              newText[currentLineIndex].length - 1
+            );
+            return newText;
+          });
+        }, deletingSpeed);
+        return () => clearTimeout(timer);
+      }
+      // If we've deleted the current line
+      else {
+        // If there are more lines to delete
+        if (currentLineIndex > 0) {
+          const timer = setTimeout(() => {
+            setCurrentLineIndex((prev) => prev - 1);
+          }, 100);
+          return () => clearTimeout(timer);
+        }
+        // If we've deleted all lines
+        else {
+          // Restart the typing process
+          const timer = setTimeout(() => {
+            setIsTyping(true);
+            setIsDeleting(false);
+            setCompletedCycles((prev) => prev + 1);
+            setCurrentLineIndex(0);
+            setCurrentCharIndex(0);
+          }, 500);
+          return () => clearTimeout(timer);
+        }
+      }
+    }
+  }, [
+    currentCharIndex,
+    currentLineIndex,
+    displayedText,
+    headingLines,
+    isTyping,
+    isDeleting,
+    completedCycles,
+  ]);
+
+  return (
+    <h1 className="text-6xl font-bold mb-6 text-left">
+      {displayedText.map((line, index) => (
+        <span key={index} className="block h-[4.5rem]">
+          {line}
+          {/* Show blinking cursor on the active line */}
+          {currentLineIndex === index && (
+            <span className="inline-block w-[5px] h-[60px] bg-white ml-1 align-middle animate-blink" />
+          )}
+        </span>
+      ))}
+    </h1>
+  );
+};
+
 const Hero = () => {
   return (
     <motion.section
-      className="relative min-h-screen flex flex-col justify-start bg-black text-white overflow-hidden"
+      className="relative  flex flex-col justify-start bg-black text-white overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -136,12 +251,8 @@ const Hero = () => {
             className="ml-16 max-w-[46rem]
 "
           >
-            {/* Modified heading to have specific line breaks */}
-            <h1 className="text-6xl font-bold mb-6 text-left">
-              <span className="block">Next-Gen Development:</span>
-              <span className="block">Faster Workflow,</span>
-              <span className="block">Fewer Errors</span>
-            </h1>
+            {/* Animated typing heading component - only for desktop */}
+            <TypedHeading />
 
             <blockquote className="italic text-base text-gray-300 mb-20 text-left">
               Develop, test, and deploy smarter with AI-driven code completion,
@@ -170,6 +281,7 @@ const Hero = () => {
 
         {/* Content Container - Reduced padding and made height auto with min-height */}
         <div className="px-6 md:px-20 py-8 bg-black flex-1 flex flex-col justify-center">
+          {/* Normal static heading for mobile and tablet */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-left">
             Next-Gen Development: Faster Workflow, Fewer Errors
           </h1>
@@ -190,12 +302,26 @@ const Hero = () => {
       {/* Curved Yellow Border - Changed to orange as in the image */}
       <div className="absolute bottom-0 left-0 right-0 h-2 bg-blue-500" />
 
-      {/* Add wave animation styles */}
+      {/* Add wave and cursor blinking animations */}
       <style jsx>{`
         @keyframes wave {
           to {
             background-position-x: 118px;
           }
+        }
+
+        @keyframes blink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
+
+        .animate-blink {
+          animation: blink 0.8s infinite;
         }
       `}</style>
     </motion.section>

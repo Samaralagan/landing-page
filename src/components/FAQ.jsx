@@ -127,7 +127,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className=" min-h-screen py-16 px-4" ref={faqContainerRef}>
+    <div className="  py-16 px-4" ref={faqContainerRef}>
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold text-white text-center mb-12">
           Got Questions? We’ve Got Answers!

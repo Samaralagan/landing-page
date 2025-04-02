@@ -124,7 +124,10 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-400">
-        <p>Copyright © 2024 Dataly. All rights reserved.</p>
+        <p>
+          Copyright <a href="/privacy-policy">© 2025 Calabriatechnology.</a> All
+          rights reserved.
+        </p>
       </div>
     </footer>
   );

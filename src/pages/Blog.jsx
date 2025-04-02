@@ -5,7 +5,7 @@ import blog2 from "../assets/blog2.png";
 import blog3 from "../assets/blog3.png";
 import blog4 from "../assets/blog4.png";
 
-const Blog = () => {
+const Blogs = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [hoveredBlog, setHoveredBlog] = useState(null);
   const [hoveredButtons, setHoveredButtons] = useState({});
@@ -82,7 +82,6 @@ Cost Savings: Less development time means less operational cost and quicker time
 Conclusion
 AI is no longer futurology—it's already starting to make its presence felt within the software development landscape. From generation to deployment optimization, AI technology enables developers to save time during development without compromising quality. Organizations embracing AI in development are leading the way by having their software developed and released faster, at a lower cost, and of better quality. As AI continues to improve every year, AI deployment in software development will keep on rising, and automation will be a key aspect of coding in the future.
 Ready to harness the power of AI-powered development? The moment is here—start automating and revolutionize your software experience now!
-
 `,
     },
     {
@@ -130,6 +129,7 @@ We can anticipate only more regulation and restriction on the use of AI for deve
 Final Thoughts 
 The future of AI development is promising with numerous innovations waiting in the pipeline to be unleashed. From AI-based code generation and test tools to AI-powered DevOps and project management, AI will revolutionize the face of each stage in the software development lifecycle. As these technologies keep advancing further, developers will be creating even more innovative, better-quality software than ever before, faster than ever.
 AI effects on software development can't be avoided, and creators who utilize such technology will be more prepared to deal with the challenges of an extremely dynamic profession. Gazing into the future reveals that one thing is certain: AI-powered development is here to stay, and the opportunities are endless.
+
 `,
     },
     {
@@ -189,6 +189,7 @@ Through doing all the testing, debugging, and coding in a shorter time, code gen
 
 Conclusion
 Code generation with AI is transforming the software development process. Being able to code faster, decrease errors, and facilitate collaboration led to it getting popular among developers within quite a short span of time. With the progress of AI technology, we can look forward to seeing these tools become more advanced, even more creative in their capability and potential. With AI-based code development, developers are more efficient and produce high-quality innovative code in less cycle time. With AI, the trend will continue to grow in the future with the way code is written and created.
+
 `,
     },
     {
@@ -251,16 +252,26 @@ AI will augment, not substitute, human developers to enable developers to do mor
         max-md:bg-white/10 max-md:rounded-xl max-md:overflow-hidden"
       onMouseEnter={() => setHoveredBlog(blog.id)}
       onMouseLeave={() => setHoveredBlog(null)}
+      style={{ perspective: "1000px" }}
     >
       {/* Desktop Flip Card Effect (Large Screens) */}
       <div
-        className={`relative w-full h-full transition-all duration-700 ease-in-out transform-style-3d 
+        className={`relative w-full h-full transition-all duration-700 ease-in-out 
         max-md:hidden
-        ${hoveredBlog === blog.id ? "rotate-y-180 scale-105" : "scale-100"}
-        group-hover:shadow-2xl`}
+        ${hoveredBlog === blog.id ? "rotate-y-180 scale-105" : "scale-100"}`}
+        style={{
+          transformStyle: "preserve-3d",
+          transition: "transform 0.7s ease-in-out, scale 0.3s ease",
+          transform:
+            hoveredBlog === blog.id ? "rotateY(180deg)" : "rotateY(0deg)",
+          scale: hoveredBlog === blog.id ? 1.05 : 1,
+        }}
       >
         {/* Front of Card */}
-        <div className="absolute w-full h-full backface-hidden bg-white/10 rounded-xl overflow-hidden flex flex-col">
+        <div
+          className="absolute w-full h-full bg-white/10 rounded-xl overflow-hidden flex flex-col"
+          style={{ backfaceVisibility: "hidden" }}
+        >
           <img
             src={blog.image}
             alt={blog.title}
@@ -287,8 +298,11 @@ AI will augment, not substitute, human developers to enable developers to do mor
 
         {/* Back of Card */}
         <div
-          className={`absolute w-full h-full bg-[#1E293B] rounded-xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden 
-          ${hoveredBlog === blog.id ? "" : "hidden"}`}
+          className="absolute w-full h-full bg-[#1E293B] rounded-xl p-6 flex flex-col justify-between"
+          style={{
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
         >
           <div className="flex flex-col justify-center h-full">
             <h3 className="text-xl font-bold text-[rgb(59,130,246)] mb-4 text-center">
@@ -306,10 +320,11 @@ AI will augment, not substitute, human developers to enable developers to do mor
             >
               {/* Wave Effect */}
               <div
-                className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+                className="wave absolute w-full left-0 bottom-0 transition-all duration-500 ease-in-out"
                 style={{
                   height: hoveredButtons[blog.id] ? "100%" : "0%",
                   zIndex: 0,
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
                 }}
               >
                 <div
@@ -377,10 +392,11 @@ AI will augment, not substitute, human developers to enable developers to do mor
         >
           {/* Wave Effect */}
           <div
-            className="wave absolute w-full bg-[rgb(255,255,255,0.2)] left-0 bottom-0 transition-all duration-500 ease-in-out"
+            className="wave absolute w-full left-0 bottom-0 transition-all duration-500 ease-in-out"
             style={{
               height: hoveredButtons["back"] ? "100%" : "0%",
               zIndex: 0,
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
             }}
           >
             <div
@@ -419,8 +435,8 @@ AI will augment, not substitute, human developers to enable developers to do mor
   );
 
   return (
-    <div className="min-h-screen  py-20 px-4">
-      <div className="container mx-auto">
+    <div className="min-h-screen py-20">
+      <div className="container mx-auto px-6 md:px-12">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           {selectedBlog ? "Blog Details" : "Our Latest Blogs"}
         </h1>
@@ -428,7 +444,7 @@ AI will augment, not substitute, human developers to enable developers to do mor
         {selectedBlog ? (
           renderBlogContent(selectedBlog)
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {blogs.map(renderBlogCard)}
           </div>
         )}
@@ -446,4 +462,4 @@ AI will augment, not substitute, human developers to enable developers to do mor
   );
 };
 
-export default Blog;
+export default Blogs;

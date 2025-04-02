@@ -18,8 +18,10 @@ const Blogs = () => {
   const [hoveredBlog, setHoveredBlog] = useState(null);
   const [hoveredButtons, setHoveredButtons] = useState({});
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mobileCurrent, setMobileCurrent] = useState(0);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
+  const mobileSliderRef = useRef(null);
 
   // Wave button image URL
   const waveImageUrl =
@@ -80,6 +82,7 @@ const Blogs = () => {
 
   const slidesPerView = 3;
   const totalSlides = Math.ceil(blogs.length / slidesPerView);
+  const totalMobileSlides = blogs.length;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
@@ -89,7 +92,15 @@ const Blogs = () => {
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
 
-  // Modified to navigate to /blog instead of blog/:id
+  const nextMobileSlide = () => {
+    setMobileCurrent((prev) => (prev === totalMobileSlides - 1 ? 0 : prev + 1));
+  };
+
+  const prevMobileSlide = () => {
+    setMobileCurrent((prev) => (prev === 0 ? totalMobileSlides - 1 : prev - 1));
+  };
+
+  // Navigate to /blog instead of blog/:id
   const handleReadMoreClick = (e) => {
     e.stopPropagation(); // Prevent triggering the parent div's onClick
     navigate("/blog");
@@ -106,16 +117,13 @@ const Blogs = () => {
   const renderBlogCard = (blog) => (
     <div
       key={blog.id}
-      className="perspective-1000 h-[450px] group 
-        max-md:h-auto max-md:perspective-none 
-        max-md:bg-white/10 max-md:rounded-xl max-md:overflow-hidden"
+      className="perspective-1000 h-[450px] group hidden md:block"
       onMouseEnter={() => setHoveredBlog(blog.id)}
       onMouseLeave={() => setHoveredBlog(null)}
     >
       {/* Desktop Flip Card Effect (Large Screens) */}
       <div
         className={`relative w-full h-full transition-all duration-700 ease-in-out transform-style-3d 
-        max-md:hidden
         ${hoveredBlog === blog.id ? "rotate-y-180 scale-105" : "scale-100"}
         group-hover:shadow-2xl`}
       >
@@ -159,7 +167,7 @@ const Blogs = () => {
 
           <div>
             <button
-              onClick={handleReadMoreClick} // Changed to use the new handler
+              onClick={handleReadMoreClick}
               className="relative w-full bg-[rgb(59,130,246)] text-white py-2 rounded-[0.75rem_0rem_0.75rem_0rem] flex items-center justify-center hover:bg-blue-600 transition overflow-hidden"
               onMouseEnter={() => handleButtonHover(blog.id, true)}
               onMouseLeave={() => handleButtonHover(blog.id, false)}
@@ -188,90 +196,90 @@ const Blogs = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
 
-      {/* Mobile and Tablet Layout (Small and Medium Screens) */}
-      <div
-        className="hidden max-md:block cursor-pointer"
-        onClick={() => handleBlogClick(blog)}
-      >
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-48 object-cover"
-        />
-        <div className="p-4">
-          <h3 className="text-lg font-bold text-[rgb(59,130,246)] mb-2 line-clamp-2">
-            {blog.title}
-          </h3>
-          <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-            {blog.excerpt}
-          </p>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center text-gray-400">
-              <User size={16} className="mr-2" />
-              <span className="text-xs">{blog.author}</span>
-            </div>
-            <div className="flex items-center text-gray-400">
-              <Calendar size={16} className="mr-2" />
-              <span className="text-xs">{blog.date}</span>
-            </div>
+  // Render mobile blog card
+  const renderMobileBlogCard = (blog) => (
+    <div
+      key={blog.id}
+      className="cursor-pointer bg-white/10 rounded-xl overflow-hidden h-full w-full"
+      onClick={() => handleBlogClick(blog)}
+    >
+      <img
+        src={blog.image}
+        alt={blog.title}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-[rgb(59,130,246)] mb-2 line-clamp-2">
+          {blog.title}
+        </h3>
+        <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+          {blog.excerpt}
+        </p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center text-gray-400">
+            <User size={16} className="mr-2" />
+            <span className="text-xs">{blog.author}</span>
+          </div>
+          <div className="flex items-center text-gray-400">
+            <Calendar size={16} className="mr-2" />
+            <span className="text-xs">{blog.date}</span>
           </div>
         </div>
       </div>
     </div>
   );
 
-  // Calculate visible blogs based on current slide
-  // Ensure only 3 blogs are shown at a time in desktop view
+  // Calculate visible blogs based on current slide for desktop
   const visibleBlogs = blogs.slice(
     currentSlide * slidesPerView,
     Math.min(currentSlide * slidesPerView + slidesPerView, blogs.length)
   );
 
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className=" py-20 px-4">
       <div className="container mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           Our Latest Blogs
         </h1>
 
-        {/* Slider Container */}
-        <div className="relative">
-          {/* Slider */}
+        {/* Desktop Slider - Hidden on Mobile */}
+        <div className="relative hidden md:block">
           <div ref={sliderRef} className="overflow-hidden">
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-3 gap-6"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "1.5rem",
               }}
             >
-              {/* Display only visible blogs in desktop */}
               {visibleBlogs.map(renderBlogCard)}
             </div>
           </div>
 
-          {/* Navigation Arrows - visible only when there are more blogs than can be shown */}
+          {/* Navigation Arrows - Desktop */}
           {blogs.length > slidesPerView && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-[rgb(59,130,246)] text-white h-12 w-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg max-md:hidden"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-[rgb(59,130,246)] text-white h-12 w-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg"
               >
                 <ChevronLeft size={24} />
               </button>
 
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-[rgb(59,130,246)] text-white h-12 w-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg max-md:hidden"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-[rgb(59,130,246)] text-white h-12 w-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg"
               >
                 <ChevronRight size={24} />
               </button>
             </>
           )}
 
-          {/* Slider Indicators */}
+          {/* Slider Indicators - Desktop */}
           {totalSlides > 1 && (
             <div className="flex justify-center mt-8 gap-2">
               {Array.from({ length: totalSlides }).map((_, index) => (
@@ -282,6 +290,51 @@ const Blogs = () => {
                     currentSlide === index
                       ? "w-8 bg-[rgb(59,130,246)]"
                       : "w-3 bg-gray-600"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Mobile Slider - Only shown on Mobile/Tablet */}
+        <div className="relative block md:hidden">
+          <div ref={mobileSliderRef} className="overflow-hidden">
+            <div className="w-full h-full">
+              {renderMobileBlogCard(blogs[mobileCurrent])}
+            </div>
+          </div>
+
+          {/* Navigation Arrows - Mobile */}
+          {blogs.length > 1 && (
+            <>
+              <button
+                onClick={prevMobileSlide}
+                className="absolute left-0 top-1/2 -translate-y-12 -translate-x-3 bg-[rgb(59,130,246)] text-white h-8 w-8 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg"
+              >
+                <ChevronLeft size={16} />
+              </button>
+
+              <button
+                onClick={nextMobileSlide}
+                className="absolute right-0 top-1/2 -translate-y-12 translate-x-3 bg-[rgb(59,130,246)] text-white h-8 w-8 rounded-full flex items-center justify-center hover:bg-blue-600 transition z-10 shadow-lg"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
+
+          {/* Slider Indicators - Mobile */}
+          {totalMobileSlides > 1 && (
+            <div className="flex justify-center mt-8 gap-2">
+              {Array.from({ length: totalMobileSlides }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setMobileCurrent(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    mobileCurrent === index
+                      ? "w-6 bg-[rgb(59,130,246)]"
+                      : "w-2 bg-gray-600"
                   }`}
                 />
               ))}

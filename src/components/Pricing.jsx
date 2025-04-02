@@ -298,7 +298,7 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050B1A] flex items-center justify-center p-4 relative overflow-hidden">
+    <div className=" bg-[#050B1A] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Add particles background */}
       <Particles />
 
