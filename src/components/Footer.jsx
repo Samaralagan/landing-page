@@ -1,5 +1,6 @@
 import React from "react";
 import { Facebook, Youtube, X, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import LogoFooter from "../assets/logowhite.png"; // Update this import path
 
 const Footer = () => {
@@ -23,54 +24,71 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
           <ul className="grid grid-cols-2 lg:grid-cols-2 gap-4">
             <li>
-              <a href="/" className="hover:text-blue-400 transition-colors">
-                Home
-              </a>
+              <div>
+                <Link to="/" className="hover:text-blue-400 transition-colors">
+                  Home
+                </Link>
+              </div>
             </li>
             <li>
-              <a
-                href="/about"
-                className="hover:text-blue-400 transition-colors"
-              >
-                About
-              </a>
+              <div>
+                <Link
+                  to="/about"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  About
+                </Link>
+              </div>
             </li>
             <li>
-              <a
-                href="/contact"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Contact
-              </a>
+              <div>
+                <Link
+                  to="/contact"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
             </li>
             <li>
-              <a
-                href="/PricingTable"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Pricing Table
-              </a>
+              <div>
+                <Link
+                  to="/PricingTable"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Pricing Table
+                </Link>
+              </div>
             </li>
             <li>
-              <a href="/blog" className="hover:text-blue-400 transition-colors">
-                Blogs
-              </a>
+              <div>
+                <Link
+                  to="/blog"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Blogs
+                </Link>
+              </div>
             </li>
             <li>
-              <a
-                href="/Terms"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Terms & Conditions
-              </a>
+              <div>
+                <Link
+                  to="/Terms"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Terms & Conditions
+                </Link>
+              </div>
             </li>
             <li>
-              <a
-                href="/privacy-policy"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Privacy Policy
-              </a>
+              <div>
+                <Link
+                  to="/privacy-policy"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </div>
             </li>
           </ul>
         </div>
@@ -96,24 +114,32 @@ const Footer = () => {
           <div className="flex space-x-4">
             <a
               href="https://www.facebook.com/profile.php?id=61575018712518"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Facebook size={24} />
             </a>
             <a
               href="https://www.youtube.com/@CalabriaTechnology"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Youtube size={24} />
             </a>
             <a
               href="https://x.com/CalabriaTech"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <X size={24} />
             </a>
             <a
               href="https://www.linkedin.com/company/calabriatechnology/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-300 hover:text-blue-400 transition-colors"
             >
               <Linkedin size={24} />
@@ -125,8 +151,8 @@ const Footer = () => {
       {/* Copyright */}
       <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-400">
         <p>
-          Copyright <a href="/privacy-policy">© 2025 Calabriatechnology.</a> All
-          rights reserved.
+          Copyright <Link to="/privacy-policy">© 2025 Calabriatechnology.</Link>{" "}
+          All rights reserved.
         </p>
       </div>
     </footer>

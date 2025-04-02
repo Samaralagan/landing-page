@@ -10,14 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@shadcn/ui": "^0.0.4",
     "axios": "^1.8.4",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "framer-motion": "^12.6.2",
     "lottie-web": "^5.12.2",
     "lucide-react": "^0.484.0",
+    "node-mailjet": "^6.0.8",
     "react": "^19.0.0",
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^19.0.0",

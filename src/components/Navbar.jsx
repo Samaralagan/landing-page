@@ -93,8 +93,8 @@ const Navbar = () => {
             <img src={Logo} alt="Company Logo" className="h-8 w-auto" />
           </Link>
 
-          {/* Hamburger Menu and Signup Button for Mobile */}
-          <div className="md:hidden flex items-center space-x-4">
+          {/* Hamburger Menu and Signup Button for Mobile and Tablet (1024px and below) */}
+          <div className="lg:hidden flex items-center space-x-4">
             <button
               onClick={toggleMenu}
               className="text-white hover:text-gray-200 focus:outline-none font-bold"
@@ -104,8 +104,8 @@ const Navbar = () => {
             <SignUpButton mobile={true} />
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 relative items-center">
+          {/* Desktop Navigation (larger than 1024px) */}
+          <div className="hidden lg:flex space-x-6 relative items-center">
             {navLinks.map((link) => (
               <div key={link.path} className="relative group">
                 {isActive(link.path) && (
@@ -158,7 +158,7 @@ const Navbar = () => {
 
           {/* Mobile Navigation Menu */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 w-full bg-white/90 backdrop-blur-md shadow-lg">
+            <div className="lg:hidden absolute top-full left-0 w-full bg-white/90 backdrop-blur-md shadow-lg">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navLinks.map((link) => (
                   <Link

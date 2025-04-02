@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -10,6 +11,7 @@ import {
 } from "lucide-react";
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,28 +38,29 @@ const Contact = () => {
     // Set submitting state
     setStatus({ submitting: true, success: null, error: null });
 
+    // Get environment variables
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
     try {
-      // Local PHP endpoint URL - adjust the port if your PHP server runs on different port
-      const response = await fetch("http://localhost/api/contact.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const result = await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        form.current,
+        PUBLIC_KEY
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (result.text === "OK") {
         // Reset form on success
         setFormData({ name: "", email: "", message: "" });
         setStatus({
           submitting: false,
-          success: data.message,
+          success: "Your message has been sent successfully!",
           error: null,
         });
       } else {
-        throw new Error(data.message || "Failed to send message");
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       console.error("Error sending form:", error);
@@ -158,7 +161,7 @@ const Contact = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-2">
                 Name
