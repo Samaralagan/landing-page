@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
@@ -24,6 +24,12 @@ const Contact = () => {
     error: null,
   });
 
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -42,6 +48,17 @@ const Contact = () => {
     const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Validate that we have all required environment variables
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setStatus({
+        submitting: false,
+        success: null,
+        error:
+          "Missing EmailJS configuration. Please check your environment variables.",
+      });
+      return;
+    }
 
     try {
       const result = await emailjs.sendForm(
