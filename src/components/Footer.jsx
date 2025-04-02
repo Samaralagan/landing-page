@@ -15,7 +15,7 @@ const Footer = () => {
           <p className="text-gray-300 text-sm">
             Transform your software development process with our AI-powered
             platform. Streamline code generation, bug fixing, deployment, and
-            collaboration for productivity and scalability.
+            collaboration for productivity scalability.
           </p>
         </div>
 
