@@ -31,7 +31,7 @@ const Features = () => {
     {
       title: "AI Testing & Bug Fixing",
       description:
-        "Enhance software reliability with AI that detects, analyzes, and fixes bugs automatically, cutting down debugging time and improving performance.",
+        "Enhance software reliability with AI that detects, analyzes, and fixes bugs, cutting debugging time and improving performance.",
       subtitle: "Enhance software reliability with AI",
       icon: Mic, // Using Lucide icon as fallback
       iconSrc: ser2,
@@ -40,7 +40,7 @@ const Features = () => {
     {
       title: "AI Code Deployment",
       description:
-        "Deploy applications effortlessly with AI-driven pipelines that ensure secure, scalable, and automated releases—no manual intervention needed.",
+        "Deploy applications effortlessly with AI-driven pipelines that ensure secure, scalable, and automated releases—no intervention needed.",
       subtitle: "Deploy applications effortlessly with AI",
       icon: Type, // Using Lucide icon as fallback
       iconSrc: ser3,
@@ -58,7 +58,7 @@ const Features = () => {
     {
       title: "AI Real-Time Analytics & Collaboration",
       description:
-        "Make informed decisions with AI-driven real-time insights that monitor performance, optimize processes, and ensure efficiency at every stage.",
+        "Make informed decisions with AI-driven insights that monitor performance, optimize processes, and ensure quality at every stage.",
       subtitle: "Make informed decisions with AI",
       icon: ImageIcon, // Using Lucide icon as fallback
       iconSrc: ser5,

@@ -305,7 +305,7 @@ const Pricing = () => {
       <div className="w-full max-w-5xl relative z-10">
         {/* Title */}
         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8 md:mb-12">
-          Flexible pricing for teams of all sizes
+          Choose the Perfect Plan for Your Development Needs
         </h2>
 
         {/* Toggle Switch */}

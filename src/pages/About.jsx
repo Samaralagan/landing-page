@@ -12,9 +12,9 @@ const About = () => {
         <div className="w-full lg:w-1/2 flex items-center justify-center p-6 bg-gray-900 rounded-lg shadow-2xl border border-blue-500/30 h-auto">
           <div className="text-center lg:text-left space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Discover
+              Experience Our Grown
               <span className="block text-[rgb(59,130,246)] mt-2">
-                Our Story
+                From Our Story
               </span>
             </h1>
             <p className="text-base md:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0">
@@ -39,12 +39,13 @@ const About = () => {
               </div>
               <div className="w-full md:w-2/3 text-center md:text-left space-y-2">
                 <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(59,130,246)]">
-                  Innovation in Software Development
+                  Innovation
                 </h2>
                 <p className="text-sm md:text-base text-gray-300">
                   Revolutionizing the software development life cycle by
-                  employing intelligent AI agents, transforming coding, testing,
-                  bug fixing, and deployment processes.
+                  employing AI agents, transforming coding, testing, bug fixing,
+                  and deployment processes. this is for about us page innovation
+                  part i adjusted
                 </p>
               </div>
             </div>
@@ -88,25 +89,25 @@ const About = () => {
                 year: 2022,
                 title: "Founding",
                 description:
-                  "Established with a vision to transform software development using AI agents to automate substantial workloads and facilitate development teams.",
+                  "Transformed software development with AI automation.",
               },
               {
                 year: 2023,
                 title: "AI Integration",
                 description:
-                  "Integrated AI-driven code generation and automatic bug fixes to streamline development procedures.",
+                  "Integrated AI-driven code generation and bug fixation.",
               },
               {
                 year: 2024,
                 title: "Platform Expansion",
                 description:
-                  "Launched a complete platform integrating AI for live testing, optimization, and deployment, open to the world.",
+                  " Launched an AI for testing, optimization, and deployment.",
               },
               {
                 year: 2025,
                 title: "Global Reach",
                 description:
-                  "Evolved as a leading platform for software development using AI, offering scalable solutions for enterprises globally.",
+                  "Became a top AI platform with scalable enterprise solutions.",
               },
             ].map((item) => (
               <div key={item.year} className="mb-8 p-6 bg-[#111] rounded-lg">
@@ -130,18 +131,18 @@ const About = () => {
             <div className="relative">
               {[
                 {
-                  year: 2010,
+                  year: 2022,
                   title: "Founding",
                   description:
                     "Established with a vision to revolutionize event management.",
                 },
                 {
-                  year: 2015,
+                  year: 2023,
                   title: "First Major Expansion",
                   description: "Expanded national operations and client base.",
                 },
                 {
-                  year: 2020,
+                  year: 2024,
                   title: "Digital Transformation",
                   description:
                     "Integrated cutting-edge technology into event planning.",
