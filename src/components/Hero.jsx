@@ -12,7 +12,7 @@ const SlidingButton = () => {
     "https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fbtn-wave.png?alt=media&token=267962fb-78ee-4fcb-a559-034579dc675d";
 
   return (
-    <Link to="/contact" className="no-underline">
+    <Link to="https://app.calabriatechnology.com/" className="no-underline">
       {" "}
       {/* Wrap button with Link component */}
       <button

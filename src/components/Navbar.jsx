@@ -36,7 +36,7 @@ const Navbar = () => {
   const SignUpButton = ({ mobile }) => {
     return (
       <Link
-        to="/signup"
+        to="https://app.calabriatechnology.com/"
         className={`
           relative z-10 group
           bg-blue-900 text-white 

@@ -118,25 +118,37 @@ const Contact = () => {
           <div className="mt-8 flex space-x-6">
             <a
               href="https://www.facebook.com/profile.php?id=61575018712518"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-500 transition-colors"
+              aria-label="Facebook"
             >
               <Facebook className="w-8 h-8" />
             </a>
             <a
               href="https://www.youtube.com/@CalabriaTechnology"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-500 transition-colors"
+              aria-label="YouTube"
             >
               <Youtube className="w-8 h-8" />
             </a>
             <a
               href="https://x.com/CalabriaTech"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-500 transition-colors"
+              aria-label="X (Twitter)"
             >
               <X className="w-8 h-8" />
             </a>
             <a
               href="https://www.linkedin.com/company/calabriatechnology/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-500 transition-colors"
+              aria-label="LinkedIn"
             >
               <Linkedin className="w-8 h-8" />
             </a>
@@ -233,6 +245,7 @@ const Contact = () => {
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
+              title="Calabria Technology Office Location"
             ></iframe>
           </div>
         </div>
