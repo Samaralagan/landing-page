@@ -108,7 +108,7 @@ const TypedHeading = () => {
   const headingLines = [
     "Next-Gen Development:",
     "Faster Workflow,",
-    "Fewer Errors.",
+    "Fewer Errors",
   ];
 
   const [displayedText, setDisplayedText] = useState(["", "", ""]);

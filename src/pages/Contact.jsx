@@ -90,7 +90,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen text-white pt-24 px-4 overflow-x-hidden">
+    <div className="min-h-screen text-white pt-32 px-4 overflow-x-hidden">
       <div className="container mx-auto grid md:grid-cols-2 gap-8 max-w-6xl">
         {/* Contact Information Section */}
         <div className="bg-gray-900 p-8 rounded-lg shadow-2xl border border-blue-500/30">

@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -8,9 +14,20 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CookieConsent, { resetCookieConsentValue } from "react-cookie-consent";
-import { useState, useEffect, useRef } from "react";
+import CookieConsent from "react-cookie-consent";
+import { useState, useRef } from "react";
 import CookiePreferences from "./components/CookiePreferences";
+
+// ScrollToTop component to reset scroll position on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 // Particles component for global background
 const Particles = () => {
@@ -98,6 +115,9 @@ function App() {
 
   return (
     <Router>
+      {/* Add ScrollToTop component to handle scrolling to top on route change */}
+      <ScrollToTop />
+
       {/* Global particles background */}
       <Particles />
 

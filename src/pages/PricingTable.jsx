@@ -93,7 +93,7 @@ const PricingTable = () => {
   }, []);
 
   const DesktopView = () => (
-    <div className="mt-20">
+    <div className="mt-28">
       <div className="mb-10">
         <Pricing />
       </div>
@@ -143,7 +143,7 @@ const PricingTable = () => {
     const [expandedFeature, setExpandedFeature] = useState(0);
 
     return (
-      <div className="mobile-view bg-[#0f1218] text-white px-4 mt-20">
+      <div className="mobile-view bg-[#0f1218] text-white px-4 mt-28">
         <div className="mb-10">
           <Pricing />
         </div>

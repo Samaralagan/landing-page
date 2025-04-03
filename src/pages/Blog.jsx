@@ -441,7 +441,7 @@ AI will augment, not substitute, human developers to enable developers to do mor
   );
 
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6 md:px-12">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           {selectedBlog ? "Blog Details" : "Our Latest Blogs"}
