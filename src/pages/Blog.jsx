@@ -441,48 +441,41 @@ AI will augment, not substitute, human developers to enable developers to do mor
   );
 
   return (
-    <>
-      <SEO
-        title="Calabria Technology"
-        description="Discover our innovative solutions for digital transformation. We provide cutting-edge services to help your business grow and succeed in the digital world."
-        canonicalUrl="https://calabriatechnology.com/"
-      />
-      <div className="min-h-screen pt-32 pb-20">
-        <div className="container mx-auto px-6 md:px-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-            {selectedBlog ? "Blog Details" : "Our Latest Blogs"}
-          </h1>
+    <div className="min-h-screen pt-32 pb-20">
+      <div className="container mx-auto px-6 md:px-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+          {selectedBlog ? "Blog Details" : "Our Latest Blogs"}
+        </h1>
 
-          {selectedBlog ? (
-            renderBlogContent(selectedBlog)
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {blogs.map(renderBlogCard)}
-            </div>
-          )}
-        </div>
-
-        {/* Add global styles for links */}
-        <style jsx global>{`
-          @keyframes wave {
-            to {
-              background-position-x: 118px;
-            }
-          }
-
-          /* Global style for links in blog content */
-          .blog-content a {
-            color: rgb(59, 130, 246);
-            text-decoration: underline;
-            transition: all 0.2s ease;
-          }
-
-          .blog-content a:hover {
-            color: rgb(96, 165, 250);
-          }
-        `}</style>
+        {selectedBlog ? (
+          renderBlogContent(selectedBlog)
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {blogs.map(renderBlogCard)}
+          </div>
+        )}
       </div>
-    </>
+
+      {/* Add global styles for links */}
+      <style jsx global>{`
+        @keyframes wave {
+          to {
+            background-position-x: 118px;
+          }
+        }
+
+        /* Global style for links in blog content */
+        .blog-content a {
+          color: rgb(59, 130, 246);
+          text-decoration: underline;
+          transition: all 0.2s ease;
+        }
+
+        .blog-content a:hover {
+          color: rgb(96, 165, 250);
+        }
+      `}</style>
+    </div>
   );
 };
 
