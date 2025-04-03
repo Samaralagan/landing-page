@@ -3,6 +3,8 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
+  HashRouter,
 } from "react-router-dom";
 import { useEffect } from "react";
 import Home from "./pages/Home";
@@ -113,6 +115,78 @@ const Particles = () => {
 function App() {
   const [showPreferences, setShowPreferences] = useState(false);
 
+  // Option 1: Using HashRouter (replace this entire function if using this option)
+  /* 
+  return (
+    <HashRouter>
+      <ScrollToTop />
+      <Particles />
+
+      <div className="relative z-10">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/pricingTable" element={<PricingTable />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </div>
+
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept All"
+        declineButtonText="Reject All"
+        enableDeclineButton
+        cookieName="userConsent"
+        style={{
+          background: "#222",
+          color: "#fff",
+          padding: "15px",
+          zIndex: 9999,
+        }}
+        buttonStyle={{
+          background: "#00c896",
+          color: "#fff",
+          fontSize: "14px",
+          marginRight: "10px",
+        }}
+        declineButtonStyle={{
+          background: "#f44336",
+          color: "#fff",
+          fontSize: "14px",
+        }}
+        expires={365}
+        onAccept={() => console.log("User accepted cookies")}
+        onDecline={() => console.log("User declined cookies")}
+      >
+        <p>This website uses cookies to enhance your experience.</p>
+        <button
+          onClick={() => setShowPreferences(true)}
+          style={{
+            marginLeft: "10px",
+            color: "#00c896",
+            border: "none",
+            background: "transparent",
+            cursor: "pointer",
+          }}
+        >
+          Manage Preferences
+        </button>
+      </CookieConsent>
+
+      {showPreferences && (
+        <CookiePreferences onClose={() => setShowPreferences(false)} />
+      )}
+    </HashRouter>
+  );
+  */
+
+  // Option 2: Using BrowserRouter with catch-all route
   return (
     <Router>
       {/* Add ScrollToTop component to handle scrolling to top on route change */}
@@ -131,6 +205,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
+          {/* Add a catch-all route that redirects to home page */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>
