@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import HowItWorks from "../components/HowItWorks";
 import Testimonials from "../components/Testimonials";
@@ -60,42 +61,50 @@ const GlobalZoomEffect = () => {
 
 const Home = () => {
   return (
-    <div className="relative overflow-hidden">
-      {/* Global Zoom Effect */}
-      <GlobalZoomEffect />
+    <>
+      <SEO
+        title="Calabria Technology"
+        description="Discover our innovative solutions for digital transformation. We provide cutting-edge services to help your business grow and succeed in the digital world."
+        canonicalUrl="https://calabriatechnology.com/"
+      />
 
-      <ZoomAnimationWrapper>
-        <Hero />
-      </ZoomAnimationWrapper>
+      <div className="relative overflow-hidden">
+        {/* Global Zoom Effect */}
+        <GlobalZoomEffect />
 
-      <ZoomAnimationWrapper>
-        <Features />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <Hero />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <HowItWorks />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <Features />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <Partners />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <HowItWorks />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <Testimonials />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <Partners />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <Pricing />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <Testimonials />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <Blogs />
-      </ZoomAnimationWrapper>
+        <ZoomAnimationWrapper>
+          <Pricing />
+        </ZoomAnimationWrapper>
 
-      <ZoomAnimationWrapper>
-        <FAQ />
-      </ZoomAnimationWrapper>
-    </div>
+        <ZoomAnimationWrapper>
+          <Blogs />
+        </ZoomAnimationWrapper>
+
+        <ZoomAnimationWrapper>
+          <FAQ />
+        </ZoomAnimationWrapper>
+      </div>
+    </>
   );
 };
 

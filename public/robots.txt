@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calabriatechnology.com/sitemap.xml
